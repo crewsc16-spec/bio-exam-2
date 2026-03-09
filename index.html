@@ -10,10 +10,10 @@
 
   /* NAV BAR */
   .topbar { position: sticky; top: 0; z-index: 100; background: #1a5e3a; padding: 8px 16px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-  .topbar button { background: rgba(255,255,255,.15); color: #fff; border: none; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: .15s; }
+  .topbar button { background: rgba(255,255,255,.15); color: #fff; border: none; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: .15s; white-space: nowrap; }
   .topbar button:hover, .topbar button.active { background: #fff; color: #1a5e3a; font-weight: 600; }
   .topbar .search-box { margin-left: auto; }
-  .topbar input { padding: 6px 12px; border-radius: 20px; border: none; font-size: 13px; width: 200px; }
+  .topbar input { padding: 6px 12px; border-radius: 20px; border: none; font-size: 13px; width: 180px; }
 
   /* SECTIONS */
   .section { display: none; max-width: 1000px; margin: 0 auto; padding: 20px; }
@@ -38,17 +38,22 @@
   td { border: 1px solid #ccc; padding: 5px 10px; font-size: 13px; }
   tr:nth-child(even) { background: #f5f5f5; }
 
-  /* Highlight for search */
   mark { background: #ffe066; padding: 1px 2px; border-radius: 2px; }
+
+  /* SHARED CONTROLS */
+  .ctrl-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
+  .ctrl-bar button { background: rgba(26,94,58,.15); color: #1a5e3a; border: 2px solid #1a5e3a; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; transition: .15s; }
+  .ctrl-bar button:hover, .ctrl-bar button.on { background: #1a5e3a; color: #fff; }
+  .purple-btn { background: #7b2d8b !important; color: #fff !important; border-color: #7b2d8b !important; }
+  .purple-btn:hover { background: #9b4dab !important; }
+  .green-btn { background: #1a5e3a; color: #fff; border: none; padding: 10px 24px; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 600; transition: .15s; }
+  .green-btn:hover { background: #237a4a; }
+  .green-btn:disabled { background: #ccc; cursor: default; }
 
   /* ==================== FLASHCARDS ==================== */
   .flashcard-container { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0; }
-  .fc-controls { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px; }
-  .fc-controls button { background: rgba(26,94,58,.15); color: #1a5e3a; border: 2px solid #1a5e3a; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; transition: .15s; }
-  .fc-controls button:hover, .fc-controls button.fc-active { background: #1a5e3a; color: #fff; }
   .fc-progress { font-size: 14px; color: #555; font-weight: 600; }
   .fc-score { font-size: 13px; color: #7b2d8b; font-weight: 600; }
-
   .flashcard { width: 100%; max-width: 600px; min-height: 260px; perspective: 1000px; cursor: pointer; }
   .flashcard-inner { position: relative; width: 100%; min-height: 260px; transition: transform 0.5s; transform-style: preserve-3d; }
   .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
@@ -64,28 +69,18 @@
   .flashcard-back .fc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #1a5e3a; margin-bottom: 12px; }
   .flashcard-back .fc-answer { font-size: 16px; color: #333; line-height: 1.6; }
   .flashcard-hint { font-size: 12px; color: #999; margin-top: 8px; }
-
-  .fc-nav { display: flex; gap: 12px; align-items: center; }
-  .fc-nav button { background: #1a5e3a; color: #fff; border: none; padding: 10px 24px; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 600; transition: .15s; }
-  .fc-nav button:hover { background: #237a4a; }
-  .fc-nav button:disabled { background: #ccc; cursor: default; }
-  .fc-nav .fc-know, .fc-nav .fc-dunno { padding: 10px 20px; font-size: 13px; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; }
-  .fc-nav .fc-know { background: #4caf50; color: #fff; }
-  .fc-nav .fc-know:hover { background: #388e3c; }
-  .fc-nav .fc-dunno { background: #ef5350; color: #fff; }
-  .fc-nav .fc-dunno:hover { background: #c62828; }
+  .fc-nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .fc-nav button { border-radius: 10px; border: none; cursor: pointer; font-weight: 600; padding: 10px 20px; font-size: 13px; }
+  .fc-know { background: #4caf50; color: #fff; }
+  .fc-know:hover { background: #388e3c; }
+  .fc-dunno { background: #ef5350; color: #fff; }
+  .fc-dunno:hover { background: #c62828; }
 
   /* ==================== MATCHING GAME ==================== */
   .game-container { max-width: 900px; margin: 0 auto; padding: 20px; }
   .game-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
   .game-header .game-score { font-size: 16px; font-weight: 700; color: #1a5e3a; }
   .game-header .game-timer { font-size: 16px; font-weight: 700; color: #7b2d8b; }
-  .game-header button { background: #1a5e3a; color: #fff; border: none; padding: 8px 20px; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 600; }
-  .game-header button:hover { background: #237a4a; }
-  .game-category-select { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-  .game-category-select button { background: rgba(26,94,58,.15); color: #1a5e3a; border: 2px solid #1a5e3a; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; }
-  .game-category-select button:hover, .game-category-select button.gm-active { background: #1a5e3a; color: #fff; }
-
   .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .match-col-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #7b2d8b; text-align: center; margin-bottom: 4px; }
   .match-item {
@@ -104,36 +99,98 @@
   .game-complete p { font-size: 16px; color: #555; margin: 4px 0; }
   .game-complete .final-score { font-size: 32px; font-weight: 700; color: #7b2d8b; margin: 16px 0; }
 
-  /* ==================== QUIZ MODE ==================== */
+  /* ==================== QUIZ / TEST ==================== */
   .quiz-container { max-width: 700px; margin: 0 auto; padding: 20px; }
   .quiz-q { font-size: 16px; font-weight: 600; color: #1a5e3a; margin-bottom: 16px; line-height: 1.5; }
   .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
   .quiz-opt { padding: 12px 16px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; font-size: 14px; transition: .2s; background: #fff; }
   .quiz-opt:hover { border-color: #1a5e3a; background: #f0faf0; }
-  .quiz-opt.q-selected { border-color: #1a5e3a; background: #e8f5e9; }
   .quiz-opt.q-correct { border-color: #4caf50; background: #c8e6c9; }
   .quiz-opt.q-wrong { border-color: #ef5350; background: #ffcdd2; }
+  .quiz-opt.q-selected { border-color: #1a5e3a; background: #e8f5e9; }
   .quiz-explanation { display: none; padding: 12px; background: #f0f4ff; border-left: 3px solid #00477b; border-radius: 4px; margin: 8px 0 16px; font-size: 13px; line-height: 1.5; }
   .quiz-explanation.show { display: block; }
   .quiz-nav { display: flex; gap: 12px; justify-content: center; }
-  .quiz-nav button { background: #1a5e3a; color: #fff; border: none; padding: 10px 24px; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 600; }
-  .quiz-nav button:hover { background: #237a4a; }
-  .quiz-nav button:disabled { background: #ccc; cursor: default; }
   .quiz-progress { text-align: center; margin-bottom: 12px; font-size: 14px; color: #555; font-weight: 600; }
   .quiz-score-bar { height: 6px; background: #e0e0e0; border-radius: 3px; margin-bottom: 16px; overflow: hidden; }
   .quiz-score-fill { height: 100%; background: linear-gradient(90deg, #4caf50, #1a5e3a); border-radius: 3px; transition: width .3s; }
+
+  /* ==================== TRUE/FALSE ==================== */
+  .tf-card { max-width: 650px; margin: 0 auto; padding: 24px; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.08); text-align: center; }
+  .tf-statement { font-size: 18px; font-weight: 600; color: #333; line-height: 1.5; margin: 20px 0; min-height: 60px; }
+  .tf-btns { display: flex; gap: 16px; justify-content: center; margin: 16px 0; }
+  .tf-btns button { padding: 14px 40px; border-radius: 12px; border: 3px solid; font-size: 18px; font-weight: 700; cursor: pointer; transition: .2s; }
+  .tf-true { background: #e8f5e9; border-color: #4caf50; color: #2e7d32; }
+  .tf-true:hover { background: #c8e6c9; }
+  .tf-false { background: #ffebee; border-color: #ef5350; color: #c62828; }
+  .tf-false:hover { background: #ffcdd2; }
+  .tf-feedback { font-size: 14px; min-height: 50px; padding: 10px; border-radius: 8px; margin-top: 12px; line-height: 1.5; }
+  .tf-feedback.correct-fb { background: #e8f5e9; color: #2e7d32; border: 1px solid #4caf50; }
+  .tf-feedback.wrong-fb { background: #ffebee; color: #c62828; border: 1px solid #ef5350; }
+  .tf-streak { font-size: 14px; color: #7b2d8b; font-weight: 700; margin-top: 8px; }
+
+  /* ==================== ORDERING GAME ==================== */
+  .order-container { max-width: 600px; margin: 0 auto; }
+  .order-prompt { font-size: 16px; font-weight: 600; color: #1a5e3a; text-align: center; margin-bottom: 16px; }
+  .order-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .order-item { padding: 14px 16px; background: #fff; border: 2px solid #ddd; border-radius: 10px; cursor: grab; font-size: 14px; display: flex; align-items: center; gap: 10px; user-select: none; transition: .2s; }
+  .order-item:hover { border-color: #1a5e3a; }
+  .order-item.dragging { opacity: .5; }
+  .order-item .order-num { background: #1a5e3a; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  .order-item.o-correct { border-color: #4caf50; background: #e8f5e9; }
+  .order-item.o-wrong { border-color: #ef5350; background: #ffebee; }
+  .order-item .arrow-btns { margin-left: auto; display: flex; gap: 4px; }
+  .order-item .arrow-btns button { background: #eee; border: none; border-radius: 6px; width: 28px; height: 28px; cursor: pointer; font-size: 16px; line-height: 1; }
+  .order-item .arrow-btns button:hover { background: #ddd; }
+
+  /* ==================== MEMORY CARD GAME ==================== */
+  .mem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 700px; margin: 16px auto; }
+  .mem-card { height: 110px; perspective: 800px; cursor: pointer; }
+  .mem-card-inner { position: relative; width: 100%; height: 100%; transition: transform .4s; transform-style: preserve-3d; }
+  .mem-card.mem-flipped .mem-card-inner { transform: rotateY(180deg); }
+  .mem-card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px; font-size: 12px; line-height: 1.3; }
+  .mem-card-front { background: linear-gradient(135deg, #1a5e3a, #2e8b57); color: #fff; font-size: 28px; border: 2px solid #1a5e3a; }
+  .mem-card-back { background: #fff; border: 2px solid #7b2d8b; color: #333; font-weight: 600; transform: rotateY(180deg); }
+  .mem-card.mem-matched { opacity: .5; pointer-events: none; }
+  .mem-card.mem-matched .mem-card-back { border-color: #4caf50; background: #e8f5e9; }
+
+  /* ==================== FULL TEST ==================== */
+  .test-container { max-width: 750px; margin: 0 auto; padding: 20px; }
+  .test-q-block { background: #fff; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .test-q-num { font-size: 12px; color: #7b2d8b; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .test-q-text { font-size: 15px; font-weight: 600; color: #1a5e3a; margin-bottom: 10px; line-height: 1.4; }
+  .test-opts { display: flex; flex-direction: column; gap: 6px; }
+  .test-opt { padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; font-size: 13px; transition: .15s; }
+  .test-opt:hover { border-color: #1a5e3a; background: #f0faf0; }
+  .test-opt.t-selected { border-color: #1a5e3a; background: #e8f5e9; font-weight: 600; }
+  .test-opt.t-correct { border-color: #4caf50; background: #c8e6c9; }
+  .test-opt.t-wrong { border-color: #ef5350; background: #ffcdd2; }
+  .test-exp { display: none; padding: 10px; background: #f0f4ff; border-left: 3px solid #00477b; border-radius: 4px; margin-top: 8px; font-size: 12px; line-height: 1.4; }
+  .test-exp.show { display: block; }
+  .test-summary { text-align: center; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.08); margin-top: 20px; }
+  .test-summary h2 { color: #1a5e3a; margin-bottom: 8px; }
+  .test-summary .big-score { font-size: 48px; font-weight: 800; color: #7b2d8b; margin: 12px 0; }
+  .test-grade { font-size: 20px; font-weight: 700; margin: 8px 0; }
+  .test-grade.grade-a { color: #2e7d32; }
+  .test-grade.grade-b { color: #1a5e3a; }
+  .test-grade.grade-c { color: #f57f17; }
+  .test-grade.grade-f { color: #c62828; }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <button class="active" onclick="showSection('w4',this)">Wk 4: Cell Structure</button>
-  <button onclick="showSection('w5',this)">Wk 5: Membranes & Division</button>
-  <button onclick="showSection('w6',this)">Wk 6: Metabolism & Genetics</button>
+  <button class="active" onclick="showSection('w4',this)">Wk 4: Cells</button>
+  <button onclick="showSection('w5',this)">Wk 5: Membranes</button>
+  <button onclick="showSection('w6',this)">Wk 6: Metabolism</button>
   <button onclick="showSection('flashcards',this)">FLASHCARDS</button>
   <button onclick="showSection('quiz',this)">QUIZ</button>
-  <button onclick="showSection('matching',this)">MATCHING GAME</button>
-  <span class="search-box"><input type="text" id="searchBox" placeholder="Search (Cmd+F)..." oninput="doSearch(this.value)"></span>
+  <button onclick="showSection('tf',this)">TRUE/FALSE</button>
+  <button onclick="showSection('ordering',this)">ORDERING</button>
+  <button onclick="showSection('matching',this)">MATCHING</button>
+  <button onclick="showSection('memory',this)">MEMORY</button>
+  <button onclick="showSection('test',this)">FULL TEST</button>
+  <span class="search-box"><input type="text" id="searchBox" placeholder="Search..." oninput="doSearch(this.value)"></span>
 </div>
 
 <!-- ============================================================ -->
@@ -200,6 +257,7 @@
   <tr><td>Size</td><td>Smaller (1&ndash;10 &micro;m)</td><td>Larger (10&ndash;100 &micro;m)</td></tr>
   <tr><td>Organelles</td><td>No membrane-bound organelles</td><td>Membrane-bound organelles</td></tr>
   <tr><td>Cell Wall</td><td>Most have peptidoglycan wall</td><td>Plants: cellulose; Animals: none</td></tr>
+  <tr><td>DNA</td><td>Circular, in nucleoid region</td><td>Linear chromosomes in nucleus</td></tr>
   <tr><td>Examples</td><td>Bacteria, Archaea</td><td>Animals, Plants, Fungi, Protists</td></tr>
 </table>
 <ul>
@@ -220,21 +278,23 @@
   </li>
   <li><strong>Golgi Apparatus</strong> &mdash; modifies, sorts, and packages proteins and lipids for transport</li>
   <li><strong>Lysosomes</strong> &mdash; contain digestive enzymes; break down waste and cellular debris</li>
+  <li><strong>Peroxisomes</strong> &mdash; break down fatty acids and detoxify harmful substances (e.g., hydrogen peroxide)</li>
   <li><strong>Vesicles</strong> &mdash; transport materials between organelles</li>
 </ul>
 
 <h3>Energy Organelles</h3>
 <ul>
-  <li><strong>Mitochondria</strong> &mdash; "powerhouse of the cell"; site of cellular respiration (ATP production)</li>
-  <li><strong>Chloroplasts</strong> (plants/algae only) &mdash; site of photosynthesis; contain chlorophyll</li>
+  <li><strong>Mitochondria</strong> &mdash; "powerhouse of the cell"; site of cellular respiration (ATP production); has a double membrane with inner folds called <strong>cristae</strong></li>
+  <li><strong>Chloroplasts</strong> (plants/algae only) &mdash; site of photosynthesis; contain chlorophyll; have thylakoid membranes and stroma</li>
 </ul>
 <div class="warning">Both mitochondria and chloroplasts have their own DNA &mdash; supports the endosymbiont theory!</div>
 
 <h3>Cytoskeleton</h3>
 <ul>
-  <li><strong>Microfilaments</strong> (actin) &mdash; cell movement, shape</li>
-  <li><strong>Intermediate filaments</strong> &mdash; structural support</li>
-  <li><strong>Microtubules</strong> (tubulin) &mdash; cell division, transport, cilia/flagella</li>
+  <li><strong>Microfilaments</strong> (actin) &mdash; cell movement, shape, muscle contraction</li>
+  <li><strong>Intermediate filaments</strong> &mdash; structural support, anchoring organelles</li>
+  <li><strong>Microtubules</strong> (tubulin) &mdash; cell division (spindle fibers), intracellular transport, cilia/flagella</li>
+  <li><strong>Centrosomes/Centrioles</strong> &mdash; organize microtubules during cell division (animal cells)</li>
 </ul>
 
 <h2>Cell Types Comparison</h2>
@@ -242,9 +302,21 @@
   <tr><th>Organism Type</th><th>Examples</th><th>Key Features</th></tr>
   <tr><td>Unicellular prokaryote</td><td>Salmonella typhimurium</td><td>Single cell, causes food poisoning</td></tr>
   <tr><td>Unicellular eukaryote</td><td>Paramecium caudatum</td><td>Lives in freshwater, complex single cell</td></tr>
-  <tr><td>Multicellular (plant)</td><td>Black walnut leaf (stomata)</td><td>Specialized tissues, protective hairs</td></tr>
+  <tr><td>Multicellular (algae)</td><td>Ceramium pacificum</td><td>Multicellular red alga</td></tr>
   <tr><td>Multicellular (fungus)</td><td>Penicillium camembertii</td><td>Spores for asexual reproduction</td></tr>
+  <tr><td>Multicellular (plant)</td><td>Black walnut leaf</td><td>Stomata and protective hairs</td></tr>
   <tr><td>Multicellular (animal)</td><td>Human blood cells in arterioles</td><td>Red &amp; white blood cells</td></tr>
+</table>
+
+<h2>Plant vs. Animal Cells</h2>
+<table>
+  <tr><th>Feature</th><th>Plant Cell</th><th>Animal Cell</th></tr>
+  <tr><td>Cell Wall</td><td>Yes (cellulose)</td><td>No</td></tr>
+  <tr><td>Chloroplasts</td><td>Yes</td><td>No</td></tr>
+  <tr><td>Central Vacuole</td><td>Large central vacuole</td><td>Small or absent</td></tr>
+  <tr><td>Centrioles</td><td>Usually absent</td><td>Present</td></tr>
+  <tr><td>Shape</td><td>Rigid, rectangular</td><td>Flexible, round</td></tr>
+  <tr><td>Lysosomes</td><td>Rare</td><td>Common</td></tr>
 </table>
 </div>
 
@@ -257,7 +329,9 @@
 <h2>The Plasma Membrane as Gate and Gatekeeper</h2>
 <ul>
   <li>Made up of a double layer of lipids &mdash; the <strong>phospholipid bilayer</strong></li>
+  <li>Phospholipids have a <strong>hydrophilic</strong> (water-loving) head and <strong>hydrophobic</strong> (water-fearing) tails</li>
   <li>Proteins embedded in the bilayer perform transport, signaling, and adhesion</li>
+  <li>Also contains <strong>cholesterol</strong> (stabilizes fluidity) and <strong>carbohydrates</strong> (cell recognition)</li>
   <li>The membrane is <strong>selectively permeable</strong> &mdash; only certain substances can pass</li>
   <li>Cells expend large amounts of energy to maintain the chemical difference between interior and exterior</li>
 </ul>
@@ -265,13 +339,14 @@
 
 <h2>Passive Transport (No Energy Required)</h2>
 
-<h3>Diffusion</h3>
+<h3>Simple Diffusion</h3>
 <ul>
   <li>Passive transport of a substance from a region of <strong>higher concentration &rarr; lower concentration</strong></li>
   <li>Continues until <strong>equilibrium</strong> is reached</li>
   <li>Smaller molecules diffuse faster than larger ones</li>
   <li>Heat increases the rate of diffusion</li>
   <li>Greater concentration difference = faster diffusion rate</li>
+  <li>Small, nonpolar molecules (O&#8322;, CO&#8322;) can cross the membrane directly</li>
 </ul>
 
 <h3>Osmosis</h3>
@@ -279,6 +354,7 @@
 <ul>
   <li>Does NOT involve the movement of solute &mdash; only water moves</li>
   <li>Vital for maintaining proper water balance in every cell</li>
+  <li>Water moves toward the side with MORE solute (more concentrated)</li>
 </ul>
 
 <h3>Tonicity</h3>
@@ -289,107 +365,118 @@
   <tr><td><strong>Isotonic</strong></td><td>Equal solute</td><td>No net movement</td><td>Cell stays the same</td></tr>
 </table>
 <div class="warning">Know hypertonic vs. hypotonic vs. isotonic &mdash; very testable!</div>
+<div class="note">Plant cells in a hypotonic solution become <strong>turgid</strong> (firm) thanks to their cell wall. In a hypertonic solution they undergo <strong>plasmolysis</strong> (membrane pulls away from wall).</div>
 
 <h3>Facilitated Diffusion</h3>
 <ul>
   <li>Uses <strong>transport proteins</strong> (channels or carriers) to move substances down their concentration gradient</li>
   <li>Still passive &mdash; no energy input required</li>
-  <li>Needed for large or charged molecules that can't cross the lipid bilayer alone</li>
+  <li>Needed for large, polar, or charged molecules that can't cross the lipid bilayer alone (e.g., glucose, ions)</li>
+  <li><strong>Channel proteins</strong> &mdash; form pores (e.g., aquaporins for water, ion channels)</li>
+  <li><strong>Carrier proteins</strong> &mdash; change shape to shuttle molecules across</li>
 </ul>
 
 <h2>Active Transport (Energy Required)</h2>
 <ul>
   <li>Moves substances <strong>against</strong> the concentration gradient (low &rarr; high)</li>
   <li>Requires <strong>ATP</strong> energy</li>
-  <li>Example: <strong>Sodium-Potassium Pump</strong> (Na+/K+ ATPase) &mdash; pumps 3 Na+ out and 2 K+ in</li>
+  <li>Example: <strong>Sodium-Potassium Pump</strong> (Na+/K+ ATPase) &mdash; pumps 3 Na+ out and 2 K+ in per ATP</li>
 </ul>
 
 <h3>Bulk Transport</h3>
 <ul>
   <li><strong>Endocytosis</strong> &mdash; cell takes in large molecules/particles by engulfing them
     <ul>
-      <li><em>Phagocytosis</em> ("cell eating") &mdash; solid particles</li>
-      <li><em>Pinocytosis</em> ("cell drinking") &mdash; dissolved substances</li>
-      <li><em>Receptor-mediated endocytosis</em> &mdash; specific molecules bind receptors</li>
+      <li><em>Phagocytosis</em> ("cell eating") &mdash; solid particles (e.g., white blood cells engulfing bacteria)</li>
+      <li><em>Pinocytosis</em> ("cell drinking") &mdash; dissolved substances/fluids</li>
+      <li><em>Receptor-mediated endocytosis</em> &mdash; specific molecules bind receptors, triggering uptake</li>
     </ul>
   </li>
-  <li><strong>Exocytosis</strong> &mdash; cell releases large molecules by fusing vesicles with the membrane</li>
+  <li><strong>Exocytosis</strong> &mdash; cell releases large molecules by fusing vesicles with the membrane (e.g., neurotransmitter release)</li>
 </ul>
+
+<h2>Summary: Transport Types</h2>
+<table>
+  <tr><th>Type</th><th>Direction</th><th>Energy?</th><th>Examples</th></tr>
+  <tr><td>Simple Diffusion</td><td>High &rarr; Low</td><td>No</td><td>O&#8322;, CO&#8322; across membrane</td></tr>
+  <tr><td>Facilitated Diffusion</td><td>High &rarr; Low</td><td>No</td><td>Glucose via carrier; ions via channel</td></tr>
+  <tr><td>Osmosis</td><td>Low solute &rarr; High solute</td><td>No</td><td>Water via aquaporins</td></tr>
+  <tr><td>Active Transport</td><td>Low &rarr; High</td><td>Yes (ATP)</td><td>Na+/K+ pump</td></tr>
+  <tr><td>Endocytosis</td><td>Into cell</td><td>Yes</td><td>Phagocytosis, pinocytosis</td></tr>
+  <tr><td>Exocytosis</td><td>Out of cell</td><td>Yes</td><td>Neurotransmitter release</td></tr>
+</table>
 
 <h2>Cell Division</h2>
 
 <h3>The Cell Cycle</h3>
 <table>
   <tr><th>Phase</th><th>What Happens</th></tr>
-  <tr><td><strong>G1 (Gap 1)</strong></td><td>Cell grows, performs normal functions</td></tr>
-  <tr><td><strong>S (Synthesis)</strong></td><td>DNA replication occurs</td></tr>
-  <tr><td><strong>G2 (Gap 2)</strong></td><td>Cell prepares for division, organelles duplicate</td></tr>
+  <tr><td><strong>G1 (Gap 1)</strong></td><td>Cell grows, performs normal functions, prepares for DNA synthesis</td></tr>
+  <tr><td><strong>S (Synthesis)</strong></td><td>DNA replication occurs &mdash; each chromosome duplicated into sister chromatids</td></tr>
+  <tr><td><strong>G2 (Gap 2)</strong></td><td>Cell prepares for division; organelles duplicate, proteins synthesized</td></tr>
   <tr><td><strong>M (Mitosis)</strong></td><td>Nuclear division + cytokinesis</td></tr>
 </table>
-<div class="note">G1 + S + G2 = Interphase (the cell spends most of its time here)</div>
+<div class="note">G1 + S + G2 = <strong>Interphase</strong> (the cell spends ~90% of its time here)</div>
+<div class="note"><strong>G0 phase</strong>: Some cells exit the cycle and enter a non-dividing state (e.g., nerve cells, muscle cells).</div>
 
 <h3>Mitosis (Somatic Cell Division)</h3>
-<p>Produces <strong>2 identical daughter cells</strong> (diploid &rarr; diploid)</p>
+<p>Produces <strong>2 identical daughter cells</strong> (diploid &rarr; diploid, 2n &rarr; 2n)</p>
 <table>
   <tr><th>Phase</th><th>Key Events</th></tr>
-  <tr><td><strong>Prophase</strong></td><td>Chromatin condenses into chromosomes; spindle forms; nuclear envelope begins to break down</td></tr>
-  <tr><td><strong>Metaphase</strong></td><td>Chromosomes line up at the metaphase plate (cell equator)</td></tr>
-  <tr><td><strong>Anaphase</strong></td><td>Sister chromatids separate and move to opposite poles</td></tr>
+  <tr><td><strong>Prophase</strong></td><td>Chromatin condenses into visible chromosomes; spindle forms from centrosomes; nuclear envelope begins to break down</td></tr>
+  <tr><td><strong>Metaphase</strong></td><td>Chromosomes line up at the metaphase plate (cell equator); spindle fibers attach to centromeres</td></tr>
+  <tr><td><strong>Anaphase</strong></td><td>Sister chromatids separate and move to opposite poles; cell elongates</td></tr>
   <tr><td><strong>Telophase</strong></td><td>Nuclear envelopes reform; chromosomes decondense; spindle disassembles</td></tr>
-  <tr><td><strong>Cytokinesis</strong></td><td>Cytoplasm divides &mdash; cleavage furrow (animals) or cell plate (plants)</td></tr>
+  <tr><td><strong>Cytokinesis</strong></td><td>Cytoplasm divides &mdash; <strong>cleavage furrow</strong> (animals) or <strong>cell plate</strong> (plants)</td></tr>
 </table>
 <div class="warning">Remember: PMAT &mdash; Prophase, Metaphase, Anaphase, Telophase</div>
 
 <h3>Meiosis (Gamete Formation)</h3>
-<p>Produces <strong>4 genetically unique haploid cells</strong> (diploid &rarr; haploid)</p>
+<p>Produces <strong>4 genetically unique haploid cells</strong> (diploid &rarr; haploid, 2n &rarr; n)</p>
 <div class="key-term">Meiosis has TWO rounds of division: Meiosis I (separates homologous pairs) and Meiosis II (separates sister chromatids)</div>
 
-<h3>Meiosis I</h3>
+<h3>Meiosis I (Reductional Division)</h3>
 <ul>
-  <li><strong>Prophase I</strong> &mdash; Homologous chromosomes pair up (<strong>synapsis</strong>); <strong>crossing over</strong> occurs (exchange of genetic material)</li>
-  <li><strong>Metaphase I</strong> &mdash; Homologous pairs line up at the metaphase plate</li>
-  <li><strong>Anaphase I</strong> &mdash; Homologous chromosomes separate (NOT sister chromatids)</li>
-  <li><strong>Telophase I &amp; Cytokinesis</strong> &mdash; Two haploid cells formed</li>
+  <li><strong>Prophase I</strong> &mdash; Homologous chromosomes pair up (<strong>synapsis</strong>) forming <strong>tetrads</strong>; <strong>crossing over</strong> occurs (exchange of genetic material between non-sister chromatids)</li>
+  <li><strong>Metaphase I</strong> &mdash; Homologous pairs (tetrads) line up at the metaphase plate; orientation is random (<strong>independent assortment</strong>)</li>
+  <li><strong>Anaphase I</strong> &mdash; Homologous chromosomes separate (NOT sister chromatids); one from each pair goes to each pole</li>
+  <li><strong>Telophase I &amp; Cytokinesis</strong> &mdash; Two haploid cells formed, each with one set of chromosomes (still as sister chromatids)</li>
 </ul>
 
-<h3>Meiosis II (similar to mitosis)</h3>
+<h3>Meiosis II (Equational Division &mdash; similar to mitosis)</h3>
 <ul>
   <li>Sister chromatids separate &rarr; 4 haploid daughter cells</li>
-</ul>
-
-<h3>Independent Assortment</h3>
-<ul>
-  <li>The random distribution of different chromosome pairs into daughter cells during meiosis I</li>
-  <li>Creates gametes that are genetically different from each other</li>
-  <li>Combined with crossing over and random fertilization &rarr; <strong>genetic uniqueness</strong></li>
+  <li>No additional DNA replication between meiosis I and II</li>
 </ul>
 
 <h3>Sources of Genetic Variation</h3>
 <table>
-  <tr><th>Source</th><th>Description</th></tr>
-  <tr><td>Crossing over</td><td>Exchange of DNA between homologous chromosomes during Prophase I</td></tr>
-  <tr><td>Independent assortment</td><td>Random orientation of homologous pairs at metaphase plate</td></tr>
-  <tr><td>Random fertilization</td><td>Any egg + any sperm = unique combination</td></tr>
-  <tr><td>Mutation</td><td>Ultimate source of all new genetic variation</td></tr>
+  <tr><th>Source</th><th>Description</th><th>When It Occurs</th></tr>
+  <tr><td><strong>Crossing over</strong></td><td>Exchange of DNA segments between homologous chromosomes</td><td>Prophase I</td></tr>
+  <tr><td><strong>Independent assortment</strong></td><td>Random orientation of homologous pairs at metaphase plate</td><td>Metaphase I</td></tr>
+  <tr><td><strong>Random fertilization</strong></td><td>Any egg + any sperm = unique combination</td><td>Fertilization</td></tr>
+  <tr><td><strong>Mutation</strong></td><td>Ultimate source of all new genetic variation</td><td>Any time</td></tr>
 </table>
-<div class="note">Genetic variation is the raw material for evolution. Mutations are the ultimate source of new alleles.</div>
+<div class="note">Genetic variation is the raw material for evolution by natural selection.</div>
 
 <h2>Mitosis vs. Meiosis</h2>
 <table>
   <tr><th>Feature</th><th>Mitosis</th><th>Meiosis</th></tr>
-  <tr><td>Divisions</td><td>1</td><td>2</td></tr>
-  <tr><td>Daughter cells</td><td>2 identical (diploid)</td><td>4 unique (haploid)</td></tr>
+  <tr><td>Number of divisions</td><td>1</td><td>2</td></tr>
+  <tr><td>Daughter cells produced</td><td>2 identical (diploid, 2n)</td><td>4 unique (haploid, n)</td></tr>
   <tr><td>Crossing over</td><td>No</td><td>Yes (Prophase I)</td></tr>
+  <tr><td>Homologous pairing</td><td>No</td><td>Yes (tetrads in Prophase I)</td></tr>
   <tr><td>Function</td><td>Growth &amp; repair</td><td>Gamete (sex cell) production</td></tr>
-  <tr><td>Genetic result</td><td>Clones of parent</td><td>Genetically diverse</td></tr>
+  <tr><td>Genetic result</td><td>Clones of parent cell</td><td>Genetically diverse</td></tr>
+  <tr><td>Where in body</td><td>Somatic (body) cells</td><td>Gonads (ovaries/testes)</td></tr>
 </table>
 </div>
 
 <!-- ============================================================ -->
-<!-- WEEK 6: METABOLISM AND MOLECULAR GENETICS -->
+<!-- WEEK 6: METABOLISM -->
 <!-- ============================================================ -->
 <div id="w6" class="section">
-<h1>Week 6: Metabolism & Molecular Genetics</h1>
+<h1>Week 6: Metabolism</h1>
 
 <h2>Enzymes</h2>
 <div class="key-term">Enzymes are proteins that act as biological catalysts &mdash; they speed up reactions without being changed themselves.</div>
@@ -397,22 +484,26 @@
   <li><strong>Substrate</strong> = the reactant(s) that an enzyme acts on</li>
   <li><strong>Active site</strong> = the region on the enzyme where the substrate binds</li>
   <li><strong>Product</strong> = what is produced after the enzymatic reaction</li>
+  <li><strong>Enzyme-substrate complex</strong> = temporary association when substrate binds the active site</li>
 </ul>
 
 <h3>Properties of Enzymes</h3>
 <ul>
-  <li>Highly specific (each enzyme catalyzes a particular reaction)</li>
+  <li>Highly specific (each enzyme catalyzes a particular reaction) &mdash; <strong>lock and key</strong> or <strong>induced fit</strong> model</li>
   <li>Reusable &mdash; not consumed in the reaction</li>
-  <li>Affected by temperature, pH, and substrate concentration</li>
+  <li>Lower the <strong>activation energy</strong> (energy barrier) needed for a reaction to proceed</li>
+  <li>Affected by <strong>temperature</strong> (too high = denatures), <strong>pH</strong> (optimal range varies), and <strong>substrate concentration</strong></li>
   <li>Can be regulated by inhibitors and activators</li>
 </ul>
 
 <h3>Enzyme Regulation</h3>
 <ul>
-  <li><strong>Competitive inhibitor</strong> &mdash; binds to the active site (competes with substrate)</li>
-  <li><strong>Noncompetitive inhibitor</strong> &mdash; binds elsewhere, changing enzyme shape (allosteric)</li>
-  <li><strong>Feedback inhibition</strong> &mdash; end product inhibits an earlier enzyme in the pathway</li>
+  <li><strong>Competitive inhibitor</strong> &mdash; binds to the active site (competes with substrate); can be overcome by adding more substrate</li>
+  <li><strong>Noncompetitive (allosteric) inhibitor</strong> &mdash; binds elsewhere, changing enzyme shape so substrate can't bind effectively</li>
+  <li><strong>Feedback inhibition</strong> &mdash; end product of a pathway inhibits an earlier enzyme in that same pathway (negative feedback loop)</li>
+  <li><strong>Cofactors</strong> (inorganic, e.g., metal ions) and <strong>coenzymes</strong> (organic, e.g., vitamins) &mdash; helper molecules that assist enzyme function</li>
 </ul>
+<div class="note"><strong>Denaturation</strong>: Extreme heat or pH unfolds the enzyme, destroying the active site shape permanently.</div>
 
 <h2>Metabolic Pathways</h2>
 <ul>
@@ -420,6 +511,8 @@
   <li>Multistep pathways proceed rapidly because enzymes are arranged close together</li>
   <li>Products of one reaction act as substrates for the next</li>
   <li>Enzymes may be concentrated in organelles (e.g., mitochondrion), localized in membranes, or clustered in multienzyme complexes</li>
+  <li><strong>Catabolic pathways</strong> &mdash; break down molecules, release energy (e.g., cellular respiration)</li>
+  <li><strong>Anabolic pathways</strong> &mdash; build up molecules, require energy (e.g., photosynthesis)</li>
 </ul>
 
 <h2>Molecular Energy Carriers</h2>
@@ -427,130 +520,91 @@
   <li>Organic molecules necessary for receiving, storing, and delivering energy within the cell</li>
   <li><strong>ATP (Adenosine Triphosphate)</strong> &mdash; the most widely used energy carrier
     <ul>
-      <li>Releases energy when it loses a terminal phosphate group &rarr; becomes <strong>ADP</strong></li>
-      <li>In photosynthesis, energy from the sun converts ADP back into ATP</li>
+      <li>Composed of adenine + ribose + 3 phosphate groups</li>
+      <li>Releases energy when it loses a terminal phosphate group &rarr; becomes <strong>ADP + P<sub>i</sub></strong></li>
+      <li>The bond between the 2nd and 3rd phosphate is a <strong>high-energy bond</strong></li>
+      <li>Recycled: ADP + P<sub>i</sub> + energy &rarr; ATP</li>
     </ul>
   </li>
-  <li><strong>NADPH</strong> and <strong>NADH</strong> &mdash; specialized carriers that store energy in loosely bound electrons and hydrogen ions (protons)</li>
-  <li>Deliver electrons to transport systems for high-yield ATP production</li>
+  <li><strong>NADH</strong> and <strong>NADPH</strong> &mdash; electron carriers that store energy in loosely bound electrons and hydrogen ions (protons)</li>
+  <li><strong>FADH&#8322;</strong> &mdash; another electron carrier used in cellular respiration</li>
+  <li>These deliver electrons to the electron transport chain for high-yield ATP production</li>
 </ul>
 
 <h2>Photosynthesis</h2>
 <div class="formula">6CO&#8322; + 6H&#8322;O + light energy &rarr; C&#8326;H&#8321;&#8322;O&#8326; + 6O&#8322;</div>
 <ul>
-  <li>Only <strong>producers</strong> (plants, algae, certain bacteria) carry out photosynthesis</li>
+  <li>Only <strong>producers</strong> (autotrophs: plants, algae, certain bacteria) carry out photosynthesis</li>
   <li>Occurs in <strong>chloroplasts</strong></li>
   <li>Chloroplasts contain <strong>chlorophyll</strong> &mdash; a green pigment that absorbs light energy</li>
+  <li>Converts light energy into chemical energy stored in glucose</li>
 </ul>
 
 <h3>Light-Dependent Reactions</h3>
 <ul>
   <li>Occur in the <strong>thylakoid membranes</strong></li>
-  <li>Light is absorbed by chlorophyll and other pigments</li>
-  <li>Water is split (photolysis) &rarr; releases O&#8322;</li>
-  <li>Produce <strong>ATP</strong> and <strong>NADPH</strong></li>
+  <li>Light is absorbed by chlorophyll and other pigments (carotenoids, etc.)</li>
+  <li>Water is split (<strong>photolysis</strong>) &rarr; releases O&#8322; as a byproduct</li>
+  <li>Produce <strong>ATP</strong> and <strong>NADPH</strong> (energy carriers for the Calvin Cycle)</li>
+  <li>Involve two photosystems (Photosystem II and Photosystem I) and an electron transport chain</li>
 </ul>
 
 <h3>Calvin Cycle (Light-Independent / "Dark" Reactions)</h3>
 <ul>
   <li>Occurs in the <strong>stroma</strong> of the chloroplast</li>
   <li>Uses ATP and NADPH from light reactions</li>
-  <li>Fixes CO&#8322; into organic molecules (glucose)</li>
-  <li><strong>Carbon fixation</strong> by the enzyme RuBisCO</li>
+  <li>Fixes CO&#8322; into organic molecules (G3P, which is used to build glucose)</li>
+  <li><strong>Carbon fixation</strong> by the enzyme <strong>RuBisCO</strong> (most abundant enzyme on Earth)</li>
+  <li>Does NOT directly require light, but depends on products of light reactions</li>
 </ul>
 
 <h3>Wavelengths and Color</h3>
 <ul>
-  <li>Short wavelengths have more energy than long wavelengths</li>
+  <li>Short wavelengths (violet/blue) have <strong>more energy</strong> than long wavelengths (red)</li>
   <li>The color of an object is determined by the wavelengths of visible light it <strong>reflects</strong></li>
   <li>Chlorophyll absorbs red and blue light, reflects <strong>green</strong></li>
+  <li>Accessory pigments (carotenoids) absorb other wavelengths &rarr; appear yellow/orange</li>
 </ul>
 
 <h2>Cellular Respiration</h2>
 <div class="formula">C&#8326;H&#8321;&#8322;O&#8326; + 6O&#8322; &rarr; 6CO&#8322; + 6H&#8322;O + ATP (energy)</div>
-<div class="note">Cellular respiration is essentially the REVERSE of photosynthesis.</div>
+<div class="note">Cellular respiration is essentially the REVERSE of photosynthesis. Together they form a cycle.</div>
 <ul>
   <li>All eukaryotes and most bacteria perform cellular respiration</li>
-  <li>Extracts chemical energy from food molecules</li>
+  <li>Extracts chemical energy from food molecules (primarily glucose)</li>
+  <li>Aerobic respiration requires oxygen</li>
 </ul>
 
 <h3>Three Stages of Cellular Respiration</h3>
 <table>
   <tr><th>Stage</th><th>Location</th><th>Input</th><th>Output</th><th>ATP Yield</th></tr>
-  <tr><td><strong>Glycolysis</strong></td><td>Cytoplasm</td><td>1 Glucose</td><td>2 Pyruvate, 2 NADH</td><td>2 ATP (net)</td></tr>
-  <tr><td><strong>Krebs Cycle</strong> (Citric Acid Cycle)</td><td>Mitochondrial matrix</td><td>Acetyl-CoA</td><td>CO&#8322;, NADH, FADH&#8322;</td><td>2 ATP</td></tr>
-  <tr><td><strong>Electron Transport Chain (ETC)</strong></td><td>Inner mitochondrial membrane</td><td>NADH, FADH&#8322;</td><td>H&#8322;O</td><td>~34 ATP</td></tr>
+  <tr><td><strong>1. Glycolysis</strong></td><td>Cytoplasm</td><td>1 Glucose (6C)</td><td>2 Pyruvate (3C), 2 NADH</td><td>2 ATP (net)</td></tr>
+  <tr><td><strong>2. Krebs Cycle</strong> (Citric Acid Cycle)</td><td>Mitochondrial matrix</td><td>2 Acetyl-CoA (2C)</td><td>CO&#8322;, NADH, FADH&#8322;</td><td>2 ATP</td></tr>
+  <tr><td><strong>3. Electron Transport Chain + Oxidative Phosphorylation</strong></td><td>Inner mitochondrial membrane</td><td>NADH, FADH&#8322;</td><td>H&#8322;O</td><td>~34 ATP</td></tr>
 </table>
-<div class="warning">Total yield: ~36&ndash;38 ATP per glucose molecule. Glycolysis is the only stage that does NOT require oxygen!</div>
+<div class="warning">Total yield: ~36&ndash;38 ATP per glucose molecule. Glycolysis is the ONLY stage that does NOT require oxygen!</div>
+<div class="note"><strong>Transition step</strong>: Between glycolysis and Krebs, pyruvate is converted to Acetyl-CoA (+ CO&#8322; + NADH) in the mitochondrial matrix.</div>
 
 <h3>Anaerobic Respiration (Fermentation)</h3>
 <ul>
-  <li>Occurs when oxygen is absent</li>
-  <li><strong>Lactic acid fermentation</strong> &mdash; in muscle cells (produces lactic acid)</li>
-  <li><strong>Alcoholic fermentation</strong> &mdash; in yeast (produces ethanol + CO&#8322;)</li>
-  <li>Only produces <strong>2 ATP</strong> (from glycolysis alone)</li>
+  <li>Occurs when oxygen is <strong>absent</strong></li>
+  <li>Begins with glycolysis (same as aerobic), then takes an alternative path to regenerate NAD+</li>
+  <li><strong>Lactic acid fermentation</strong> &mdash; in muscle cells and some bacteria; pyruvate &rarr; lactic acid</li>
+  <li><strong>Alcoholic fermentation</strong> &mdash; in yeast and some bacteria; pyruvate &rarr; ethanol + CO&#8322;</li>
+  <li>Only produces <strong>2 ATP</strong> total (from glycolysis alone &mdash; much less efficient than aerobic)</li>
 </ul>
 
 <h2>Photosynthesis vs. Cellular Respiration</h2>
 <table>
   <tr><th>Feature</th><th>Photosynthesis</th><th>Cellular Respiration</th></tr>
-  <tr><td>Location</td><td>Chloroplasts</td><td>Mitochondria (+ cytoplasm)</td></tr>
+  <tr><td>Location</td><td>Chloroplasts</td><td>Mitochondria (+ cytoplasm for glycolysis)</td></tr>
   <tr><td>Reactants</td><td>CO&#8322; + H&#8322;O + light</td><td>Glucose + O&#8322;</td></tr>
   <tr><td>Products</td><td>Glucose + O&#8322;</td><td>CO&#8322; + H&#8322;O + ATP</td></tr>
-  <tr><td>Energy</td><td>Stores energy</td><td>Releases energy</td></tr>
-  <tr><td>Organisms</td><td>Producers only</td><td>All organisms</td></tr>
+  <tr><td>Energy</td><td>Stores energy (endergonic)</td><td>Releases energy (exergonic)</td></tr>
+  <tr><td>Organisms</td><td>Producers (autotrophs) only</td><td>All living organisms</td></tr>
+  <tr><td>O&#8322; role</td><td>Released as byproduct</td><td>Final electron acceptor in ETC</td></tr>
+  <tr><td>Pathway type</td><td>Anabolic (builds glucose)</td><td>Catabolic (breaks down glucose)</td></tr>
 </table>
-
-<h2>Molecular Genetics (DNA)</h2>
-
-<h3>DNA Structure</h3>
-<ul>
-  <li>Double helix made of two antiparallel strands</li>
-  <li>Backbone: sugar (deoxyribose) + phosphate groups</li>
-  <li>Bases: <strong>Adenine (A)</strong> pairs with <strong>Thymine (T)</strong>; <strong>Guanine (G)</strong> pairs with <strong>Cytosine (C)</strong></li>
-  <li>Held together by <strong>hydrogen bonds</strong> between base pairs</li>
-</ul>
-<div class="warning">A-T has 2 hydrogen bonds; G-C has 3 hydrogen bonds (G-C is stronger!)</div>
-
-<h3>DNA Replication</h3>
-<ul>
-  <li>Occurs during the <strong>S phase</strong> of the cell cycle</li>
-  <li><strong>Semiconservative</strong> &mdash; each new DNA molecule has one old strand and one new strand</li>
-  <li>Key enzyme: <strong>DNA polymerase</strong> (adds nucleotides to the new strand)</li>
-  <li>Direction: 5' &rarr; 3' (leading strand is continuous; lagging strand is made in Okazaki fragments)</li>
-</ul>
-
-<h3>Gene Expression: DNA &rarr; RNA &rarr; Protein</h3>
-<div class="key-term">Central Dogma of Molecular Biology: DNA &rarr; (transcription) &rarr; mRNA &rarr; (translation) &rarr; Protein</div>
-
-<h3>Transcription (DNA &rarr; mRNA)</h3>
-<ul>
-  <li>Occurs in the <strong>nucleus</strong></li>
-  <li>Enzyme: <strong>RNA polymerase</strong></li>
-  <li>Template strand of DNA is read 3' &rarr; 5'; mRNA is built 5' &rarr; 3'</li>
-  <li>RNA uses <strong>Uracil (U)</strong> instead of Thymine (T)</li>
-</ul>
-
-<h3>Translation (mRNA &rarr; Protein)</h3>
-<ul>
-  <li>Occurs at <strong>ribosomes</strong> (in the cytoplasm or on rough ER)</li>
-  <li>mRNA codons (3-letter codes) are read by <strong>tRNA</strong> anticodons</li>
-  <li>Each codon specifies one amino acid</li>
-  <li><strong>Start codon</strong>: AUG (methionine)</li>
-  <li><strong>Stop codons</strong>: UAA, UAG, UGA</li>
-</ul>
-
-<h3>Mutations</h3>
-<ul>
-  <li><strong>Point mutations</strong> &mdash; single base change
-    <ul>
-      <li><em>Silent</em> &mdash; no change in amino acid</li>
-      <li><em>Missense</em> &mdash; different amino acid</li>
-      <li><em>Nonsense</em> &mdash; creates a premature stop codon</li>
-    </ul>
-  </li>
-  <li><strong>Frameshift mutations</strong> &mdash; insertion or deletion shifts the reading frame (usually most damaging)</li>
-</ul>
 </div>
 
 <!-- ============================================================ -->
@@ -558,12 +612,12 @@
 <!-- ============================================================ -->
 <div id="flashcards" class="section">
 <h1>Flashcards</h1>
-<div class="fc-controls" id="fcCategoryBtns">
-  <button class="fc-active" onclick="fcSetCategory('all',this)">All Cards</button>
+<div class="ctrl-bar" id="fcCategoryBtns">
+  <button class="on" onclick="fcSetCategory('all',this)">All Cards</button>
   <button onclick="fcSetCategory('w4',this)">Cell Structure</button>
   <button onclick="fcSetCategory('w5',this)">Membranes & Division</button>
-  <button onclick="fcSetCategory('w6',this)">Metabolism & Genetics</button>
-  <button onclick="fcShuffle()" style="background:#7b2d8b;color:#fff;border-color:#7b2d8b;">Shuffle</button>
+  <button onclick="fcSetCategory('w6',this)">Metabolism</button>
+  <button class="purple-btn" onclick="fcShuffle()">Shuffle</button>
 </div>
 <div class="flashcard-container">
   <div class="fc-progress" id="fcProgress">1 / 80</div>
@@ -583,8 +637,8 @@
   </div>
   <div class="fc-nav">
     <button class="fc-dunno" onclick="fcMark(false)">Still Learning</button>
-    <button onclick="fcPrev()" id="fcPrevBtn">&larr; Prev</button>
-    <button onclick="fcNext()" id="fcNextBtn">Next &rarr;</button>
+    <button class="green-btn" onclick="fcPrev()" id="fcPrevBtn">&larr; Prev</button>
+    <button class="green-btn" onclick="fcNext()" id="fcNextBtn">Next &rarr;</button>
     <button class="fc-know" onclick="fcMark(true)">Know It</button>
   </div>
 </div>
@@ -594,15 +648,59 @@
 <!-- QUIZ -->
 <!-- ============================================================ -->
 <div id="quiz" class="section">
-<h1>Quiz Mode</h1>
-<div class="fc-controls" id="quizCategoryBtns">
-  <button class="fc-active" onclick="quizSetCategory('all',this)">All Topics</button>
+<h1>Quick Quiz</h1>
+<div class="ctrl-bar" id="quizCategoryBtns">
+  <button class="on" onclick="quizSetCategory('all',this)">All Topics</button>
   <button onclick="quizSetCategory('w4',this)">Cell Structure</button>
   <button onclick="quizSetCategory('w5',this)">Membranes & Division</button>
-  <button onclick="quizSetCategory('w6',this)">Metabolism & Genetics</button>
-  <button onclick="quizRestart()" style="background:#7b2d8b;color:#fff;border-color:#7b2d8b;">New Quiz</button>
+  <button onclick="quizSetCategory('w6',this)">Metabolism</button>
+  <button class="purple-btn" onclick="quizRestart()">New Quiz</button>
 </div>
 <div class="quiz-container" id="quizArea"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TRUE/FALSE -->
+<!-- ============================================================ -->
+<div id="tf" class="section">
+<h1>True / False Rapid Fire</h1>
+<div class="ctrl-bar" id="tfCatBtns">
+  <button class="on" onclick="tfSetCat('all',this)">All Topics</button>
+  <button onclick="tfSetCat('w4',this)">Cell Structure</button>
+  <button onclick="tfSetCat('w5',this)">Membranes & Division</button>
+  <button onclick="tfSetCat('w6',this)">Metabolism</button>
+  <button class="purple-btn" onclick="tfRestart()">Restart</button>
+</div>
+<div style="max-width:650px;margin:0 auto;">
+  <div class="fc-progress" id="tfProgress">1 / 30</div>
+  <div class="fc-score" id="tfScoreDisplay">Correct: 0 | Wrong: 0</div>
+  <div class="tf-card">
+    <div class="tf-statement" id="tfStatement"></div>
+    <div class="tf-btns">
+      <button class="tf-true" onclick="tfAnswer(true)">TRUE</button>
+      <button class="tf-false" onclick="tfAnswer(false)">FALSE</button>
+    </div>
+    <div class="tf-feedback" id="tfFeedback"></div>
+    <div class="tf-streak" id="tfStreak"></div>
+  </div>
+  <div style="text-align:center;margin-top:14px;">
+    <button class="green-btn" onclick="tfNextQ()" id="tfNextBtn" disabled>Next &rarr;</button>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ORDERING GAME -->
+<!-- ============================================================ -->
+<div id="ordering" class="section">
+<h1>Put It In Order</h1>
+<div class="ctrl-bar" id="orderCatBtns">
+  <button class="on" onclick="orderSetCat('all',this)">All Challenges</button>
+  <button onclick="orderSetCat('w4',this)">Cell Structure</button>
+  <button onclick="orderSetCat('w5',this)">Membranes & Division</button>
+  <button onclick="orderSetCat('w6',this)">Metabolism</button>
+</div>
+<div class="order-container" id="orderArea"></div>
 </div>
 
 <!-- ============================================================ -->
@@ -610,13 +708,45 @@
 <!-- ============================================================ -->
 <div id="matching" class="section">
 <h1>Matching Game</h1>
-<div class="game-category-select" id="gameCategoryBtns">
-  <button class="gm-active" onclick="gameSetCategory('all',this)">All Topics</button>
+<div class="ctrl-bar" id="gameCategoryBtns">
+  <button class="on" onclick="gameSetCategory('all',this)">All Topics</button>
   <button onclick="gameSetCategory('w4',this)">Cell Structure</button>
   <button onclick="gameSetCategory('w5',this)">Membranes & Division</button>
-  <button onclick="gameSetCategory('w6',this)">Metabolism & Genetics</button>
+  <button onclick="gameSetCategory('w6',this)">Metabolism</button>
 </div>
 <div class="game-container" id="gameArea"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MEMORY CARD GAME -->
+<!-- ============================================================ -->
+<div id="memory" class="section">
+<h1>Memory Card Game</h1>
+<div class="ctrl-bar" id="memCatBtns">
+  <button class="on" onclick="memSetCat('all',this)">All Topics</button>
+  <button onclick="memSetCat('w4',this)">Cell Structure</button>
+  <button onclick="memSetCat('w5',this)">Membranes & Division</button>
+  <button onclick="memSetCat('w6',this)">Metabolism</button>
+</div>
+<div style="text-align:center;">
+  <div class="fc-progress" id="memProgress">Pairs: 0/8</div>
+  <div class="fc-score" id="memMoves">Moves: 0</div>
+</div>
+<div class="mem-grid" id="memGrid"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FULL TEST -->
+<!-- ============================================================ -->
+<div id="test" class="section">
+<h1>Full Practice Test (50 Questions)</h1>
+<p style="text-align:center;color:#555;margin-bottom:16px;">Answer all questions, then submit to see your score and review.</p>
+<div class="test-container" id="testArea"></div>
+<div style="text-align:center;margin:20px 0;">
+  <button class="green-btn" id="testSubmitBtn" onclick="testSubmit()" style="padding:14px 40px;font-size:16px;">Submit Test</button>
+  <button class="purple-btn" onclick="testGenerate()" style="padding:14px 40px;font-size:16px;border:none;border-radius:10px;cursor:pointer;font-weight:600;margin-left:10px;">New Test</button>
+</div>
+<div id="testSummary"></div>
 </div>
 
 <script>
@@ -630,7 +760,6 @@ function showSection(id, btn) {
 
 /* ===== SEARCH ===== */
 function doSearch(query) {
-  // Clear old highlights
   document.querySelectorAll('mark').forEach(m => {
     const parent = m.parentNode;
     parent.replaceChild(document.createTextNode(m.textContent), m);
@@ -654,7 +783,6 @@ function doSearch(query) {
     });
   });
   if (first) {
-    // Show the section containing the first match
     const sec = first.closest('.section');
     if (sec && !sec.classList.contains('active')) {
       showSection(sec.id, document.querySelector(`.topbar button[onclick*="${sec.id}"]`));
@@ -663,101 +791,97 @@ function doSearch(query) {
   }
 }
 
+function shuffleArr(arr) { for (let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];} return arr; }
+
 /* ===== FLASHCARD DATA ===== */
 const FC_DATA = [
-  // WEEK 4: Cell Structure
+  // WEEK 4
   {cat:'w4', q:'What are the 6 characteristics of living organisms?', a:'1) Composed of cells 2) Reproduce using DNA 3) Obtain energy for metabolism 4) Sense and respond to environment 5) Maintain homeostasis 6) Capable of evolution as a group'},
-  {cat:'w4', q:'What is the biological hierarchy from smallest to largest?', a:'Atom → Molecule → Biomolecule → Organelle → Cell → Tissue → Organ → Organ System → Organism → Population → Community → Ecosystem → Biosphere'},
+  {cat:'w4', q:'What is the biological hierarchy from smallest to largest?', a:'Atom \u2192 Molecule \u2192 Biomolecule \u2192 Organelle \u2192 Cell \u2192 Tissue \u2192 Organ \u2192 Organ System \u2192 Organism \u2192 Population \u2192 Community \u2192 Ecosystem \u2192 Biosphere'},
   {cat:'w4', q:'What is a biomolecule?', a:'A molecule found in living cells that generally contains carbon.'},
   {cat:'w4', q:'What is cytoplasm?', a:'The thick, gel-like fluid inside the cell containing ions and biomolecules.'},
-  {cat:'w4', q:'What is the function of mitochondria?', a:'The "powerhouse of the cell" — provides energy (ATP) through cellular respiration.'},
-  {cat:'w4', q:'What do ribosomes do?', a:'Manufacture proteins (protein synthesis).'},
-  {cat:'w4', q:'What is the plasma membrane made of?', a:'A phospholipid bilayer with embedded proteins.'},
+  {cat:'w4', q:'What is the function of mitochondria?', a:'The "powerhouse of the cell" \u2014 provides energy (ATP) through cellular respiration. Has its own DNA and a double membrane with inner folds called cristae.'},
+  {cat:'w4', q:'What do ribosomes do?', a:'Manufacture proteins (protein synthesis). Found free in cytoplasm or attached to rough ER.'},
+  {cat:'w4', q:'What is the plasma membrane made of?', a:'A phospholipid bilayer with embedded proteins, cholesterol, and carbohydrates.'},
   {cat:'w4', q:'What is the Fluid Mosaic Model?', a:'The model describing how proteins drift/float within the plane of the phospholipid bilayer of the plasma membrane.'},
   {cat:'w4', q:'Name 3 functions of membrane proteins.', a:'1) Transport of small molecules 2) Receptors for cell signaling 3) Adhesion to other cells'},
-  {cat:'w4', q:'How do prokaryotic and eukaryotic cells differ?', a:'Prokaryotes lack a membrane-bound nucleus and organelles, are smaller. Eukaryotes have a true nucleus, membrane-bound organelles, and are larger.'},
-  {cat:'w4', q:'What is a capsule in bacteria?', a:'A slippery, protective outer layer found on some bacteria, outside the cell wall.'},
-  {cat:'w4', q:'What does the Rough ER do?', a:'Studded with ribosomes; synthesizes and processes proteins.'},
-  {cat:'w4', q:'What does the Smooth ER do?', a:'Lipid synthesis, detoxification, and calcium storage.'},
-  {cat:'w4', q:'What is the function of the Golgi apparatus?', a:'Modifies, sorts, and packages proteins and lipids for transport to their destinations.'},
-  {cat:'w4', q:'What are lysosomes?', a:'Organelles containing digestive enzymes that break down waste, foreign material, and cellular debris.'},
-  {cat:'w4', q:'What is the endosymbiont theory?', a:'The theory that mitochondria and chloroplasts were once free-living prokaryotes that were engulfed by ancestral eukaryotic cells. Both have their own DNA.'},
-  {cat:'w4', q:'Name the 3 types of cytoskeleton filaments.', a:'1) Microfilaments (actin) — movement, shape 2) Intermediate filaments — structural support 3) Microtubules (tubulin) — division, transport, cilia/flagella'},
+  {cat:'w4', q:'How do prokaryotic and eukaryotic cells differ?', a:'Prokaryotes lack a membrane-bound nucleus and organelles, are smaller (1-10 \u00b5m), have circular DNA. Eukaryotes have a true nucleus, membrane-bound organelles, are larger (10-100 \u00b5m), have linear chromosomes.'},
+  {cat:'w4', q:'What is a capsule in bacteria?', a:'A slippery, protective outer layer found on some bacteria, outside the cell wall. Helps evade immune system.'},
+  {cat:'w4', q:'What does the Rough ER do?', a:'Studded with ribosomes; synthesizes and processes proteins, especially for export or membrane insertion.'},
+  {cat:'w4', q:'What does the Smooth ER do?', a:'Lipid synthesis, detoxification, and calcium storage. No ribosomes attached.'},
+  {cat:'w4', q:'What is the function of the Golgi apparatus?', a:'Modifies, sorts, and packages proteins and lipids for transport to their destinations (shipping department of the cell).'},
+  {cat:'w4', q:'What are lysosomes?', a:'Organelles containing digestive enzymes that break down waste, foreign material, and cellular debris. "Recycling center" of the cell.'},
+  {cat:'w4', q:'What is the endosymbiont theory?', a:'The theory that mitochondria and chloroplasts were once free-living prokaryotes that were engulfed by ancestral eukaryotic cells. Evidence: both have their own DNA and double membranes.'},
+  {cat:'w4', q:'Name the 3 types of cytoskeleton filaments.', a:'1) Microfilaments (actin) \u2014 movement, shape 2) Intermediate filaments \u2014 structural support 3) Microtubules (tubulin) \u2014 division, transport, cilia/flagella'},
   {cat:'w4', q:'What type of cell wall do most prokaryotes have?', a:'Peptidoglycan cell wall.'},
   {cat:'w4', q:'What is an organelle?', a:'A specific cellular structure that performs a unique function within the cell.'},
-  {cat:'w4', q:'Where is DNA housed in a eukaryotic cell?', a:'In the nucleus, enveloped by a double membrane (nuclear envelope).'},
+  {cat:'w4', q:'Where is DNA housed in a eukaryotic cell?', a:'In the nucleus, enveloped by a double membrane (nuclear envelope) with nuclear pores.'},
+  {cat:'w4', q:'How do plant and animal cells differ?', a:'Plant cells have: cell wall (cellulose), chloroplasts, large central vacuole, usually no centrioles. Animal cells have: centrioles, lysosomes, no cell wall or chloroplasts.'},
+  {cat:'w4', q:'What are peroxisomes?', a:'Organelles that break down fatty acids and detoxify harmful substances like hydrogen peroxide.'},
 
-  // WEEK 5: Membranes & Division
+  // WEEK 5
   {cat:'w5', q:'What does "selectively permeable" mean?', a:'The membrane allows only certain substances to pass through while blocking others.'},
+  {cat:'w5', q:'What are the components of the plasma membrane?', a:'Phospholipid bilayer (hydrophilic heads, hydrophobic tails), embedded proteins, cholesterol (fluidity), and carbohydrates (cell recognition).'},
   {cat:'w5', q:'What is diffusion?', a:'The passive movement of a substance from a region of higher concentration to lower concentration until equilibrium is reached.'},
   {cat:'w5', q:'What 3 factors affect the rate of diffusion?', a:'1) Molecule size (smaller = faster) 2) Temperature (higher = faster) 3) Concentration gradient (steeper = faster)'},
   {cat:'w5', q:'What is osmosis?', a:'The diffusion of water across a selectively permeable membrane from an area of lower solute concentration to higher solute concentration.'},
-  {cat:'w5', q:'What happens to a cell in a hypertonic solution?', a:'Water leaves the cell → cell shrivels (crenation in animal cells, plasmolysis in plant cells).'},
-  {cat:'w5', q:'What happens to a cell in a hypotonic solution?', a:'Water enters the cell → cell swells and may burst (lyse).'},
-  {cat:'w5', q:'What is an isotonic solution?', a:'A solution with equal solute concentration inside and outside the cell — no net water movement.'},
+  {cat:'w5', q:'What happens to a cell in a hypertonic solution?', a:'Water leaves the cell \u2192 cell shrivels (crenation in animal cells, plasmolysis in plant cells).'},
+  {cat:'w5', q:'What happens to a cell in a hypotonic solution?', a:'Water enters the cell \u2192 cell swells and may burst (lyse). Plant cells become turgid (firm) due to cell wall.'},
+  {cat:'w5', q:'What is an isotonic solution?', a:'A solution with equal solute concentration inside and outside the cell \u2014 no net water movement.'},
   {cat:'w5', q:'What is facilitated diffusion?', a:'Passive transport using transport proteins (channels or carriers) to move substances down their concentration gradient. No energy required.'},
-  {cat:'w5', q:'What is active transport?', a:'Movement of substances against the concentration gradient (low → high), requiring ATP energy.'},
-  {cat:'w5', q:'What is the sodium-potassium pump?', a:'An active transport protein that pumps 3 Na+ out and 2 K+ into the cell, using ATP.'},
-  {cat:'w5', q:'What is endocytosis?', a:'The process by which a cell takes in large molecules by engulfing them with the membrane. Includes phagocytosis, pinocytosis, and receptor-mediated endocytosis.'},
-  {cat:'w5', q:'What is the difference between phagocytosis and pinocytosis?', a:'Phagocytosis = "cell eating" (engulfs solid particles). Pinocytosis = "cell drinking" (takes in dissolved substances/fluids).'},
+  {cat:'w5', q:'What is active transport?', a:'Movement of substances against the concentration gradient (low \u2192 high), requiring ATP energy.'},
+  {cat:'w5', q:'What is the sodium-potassium pump?', a:'An active transport protein that pumps 3 Na+ out and 2 K+ into the cell per ATP molecule used.'},
+  {cat:'w5', q:'What is endocytosis?', a:'The process by which a cell takes in large molecules by engulfing them with the membrane. Types: phagocytosis, pinocytosis, receptor-mediated.'},
+  {cat:'w5', q:'Phagocytosis vs. pinocytosis?', a:'Phagocytosis = "cell eating" (engulfs solid particles). Pinocytosis = "cell drinking" (takes in dissolved substances/fluids).'},
   {cat:'w5', q:'What is exocytosis?', a:'The process by which a cell releases large molecules by fusing vesicles with the plasma membrane.'},
-  {cat:'w5', q:'What are the phases of the cell cycle?', a:'G1 (growth) → S (DNA synthesis) → G2 (preparation) → M (mitosis + cytokinesis). G1+S+G2 = Interphase.'},
-  {cat:'w5', q:'What happens during S phase?', a:'DNA replication occurs — each chromosome is duplicated to form sister chromatids.'},
-  {cat:'w5', q:'What does mitosis produce?', a:'2 genetically identical diploid daughter cells.'},
-  {cat:'w5', q:'What does meiosis produce?', a:'4 genetically unique haploid daughter cells (gametes).'},
-  {cat:'w5', q:'What is the correct order of mitosis phases?', a:'PMAT: Prophase → Metaphase → Anaphase → Telophase (+ Cytokinesis)'},
-  {cat:'w5', q:'What happens during Prophase?', a:'Chromatin condenses into visible chromosomes, spindle fibers form, nuclear envelope begins to break down.'},
-  {cat:'w5', q:'What happens during Metaphase?', a:'Chromosomes line up at the metaphase plate (cell equator).'},
-  {cat:'w5', q:'What happens during Anaphase?', a:'Sister chromatids separate and are pulled to opposite poles of the cell.'},
+  {cat:'w5', q:'What are the phases of the cell cycle?', a:'G1 (growth) \u2192 S (DNA synthesis) \u2192 G2 (preparation) \u2192 M (mitosis + cytokinesis). G1+S+G2 = Interphase (~90% of cycle).'},
+  {cat:'w5', q:'What happens during S phase?', a:'DNA replication occurs \u2014 each chromosome is duplicated into joined sister chromatids.'},
+  {cat:'w5', q:'What does mitosis produce?', a:'2 genetically identical diploid daughter cells (2n \u2192 2n).'},
+  {cat:'w5', q:'What does meiosis produce?', a:'4 genetically unique haploid daughter cells (2n \u2192 n) for gamete production.'},
+  {cat:'w5', q:'What is the correct order of mitosis phases?', a:'PMAT: Prophase \u2192 Metaphase \u2192 Anaphase \u2192 Telophase (+ Cytokinesis)'},
+  {cat:'w5', q:'What happens during Prophase?', a:'Chromatin condenses into visible chromosomes, spindle fibers form from centrosomes, nuclear envelope begins to break down.'},
+  {cat:'w5', q:'What happens during Metaphase?', a:'Chromosomes line up at the metaphase plate (cell equator); spindle fibers attach to centromeres.'},
+  {cat:'w5', q:'What happens during Anaphase?', a:'Sister chromatids separate and are pulled to opposite poles of the cell; cell elongates.'},
   {cat:'w5', q:'What happens during Telophase?', a:'Nuclear envelopes reform, chromosomes decondense, spindle disassembles.'},
-  {cat:'w5', q:'How does cytokinesis differ in animal vs. plant cells?', a:'Animal cells: cleavage furrow pinches the cell in two. Plant cells: a cell plate forms between the two new cells.'},
+  {cat:'w5', q:'Cytokinesis: animal vs. plant cells?', a:'Animal cells: cleavage furrow pinches the cell in two. Plant cells: a cell plate forms between the two new cells.'},
   {cat:'w5', q:'What is crossing over?', a:'The exchange of genetic material between homologous chromosomes during Prophase I of meiosis, increasing genetic variation.'},
   {cat:'w5', q:'What is independent assortment?', a:'The random distribution of homologous chromosome pairs into daughter cells during meiosis I, creating genetically diverse gametes.'},
   {cat:'w5', q:'What are the 4 sources of genetic variation?', a:'1) Crossing over 2) Independent assortment 3) Random fertilization 4) Mutation'},
   {cat:'w5', q:'What separates in Meiosis I vs. Meiosis II?', a:'Meiosis I: homologous chromosomes separate. Meiosis II: sister chromatids separate (like mitosis).'},
-  {cat:'w5', q:'What is the ultimate source of all new genetic variation?', a:'Mutation.'},
+  {cat:'w5', q:'What is a tetrad?', a:'The structure formed when homologous chromosomes pair up (synapsis) during Prophase I \u2014 consists of 4 chromatids.'},
+  {cat:'w5', q:'What is G0 phase?', a:'A non-dividing resting state that some cells enter after G1 (e.g., nerve cells, muscle cells).'},
 
-  // WEEK 6: Metabolism & Genetics
-  {cat:'w6', q:'What is an enzyme?', a:'A protein that acts as a biological catalyst — speeds up chemical reactions without being changed itself.'},
+  // WEEK 6
+  {cat:'w6', q:'What is an enzyme?', a:'A protein that acts as a biological catalyst \u2014 speeds up chemical reactions without being changed itself. Lowers activation energy.'},
   {cat:'w6', q:'What is a substrate?', a:'The reactant(s) that an enzyme acts on, binding at the active site.'},
   {cat:'w6', q:'What is the active site?', a:'The specific region on an enzyme where the substrate binds and the reaction is catalyzed.'},
-  {cat:'w6', q:'What is a competitive inhibitor?', a:'A molecule that competes with the substrate by binding directly to the enzyme\'s active site.'},
+  {cat:'w6', q:'What is a competitive inhibitor?', a:'A molecule that competes with the substrate by binding directly to the enzyme\'s active site. Can be overcome by adding more substrate.'},
   {cat:'w6', q:'What is a noncompetitive inhibitor?', a:'A molecule that binds to a site OTHER than the active site (allosteric site), changing the enzyme\'s shape and reducing activity.'},
-  {cat:'w6', q:'What is feedback inhibition?', a:'When the end product of a metabolic pathway inhibits an earlier enzyme in that same pathway.'},
-  {cat:'w6', q:'What is ATP?', a:'Adenosine triphosphate — the most widely used energy carrier in cells. Releases energy when it loses a phosphate group to become ADP.'},
-  {cat:'w6', q:'What are NADH and NADPH?', a:'Specialized energy carriers that store energy in loosely bound electrons and hydrogen ions (protons). Deliver electrons to transport systems for ATP production.'},
-  {cat:'w6', q:'What is the equation for photosynthesis?', a:'6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ (glucose) + 6O₂'},
+  {cat:'w6', q:'What is feedback inhibition?', a:'When the end product of a metabolic pathway inhibits an earlier enzyme in that same pathway (negative feedback).'},
+  {cat:'w6', q:'What is denaturation?', a:'When extreme heat or pH unfolds an enzyme, permanently destroying its active site shape and function.'},
+  {cat:'w6', q:'What is ATP?', a:'Adenosine triphosphate \u2014 the most widely used energy carrier in cells. Releases energy when it loses a phosphate group to become ADP.'},
+  {cat:'w6', q:'What are NADH and FADH\u2082?', a:'Electron carriers that store energy in loosely bound electrons. Deliver electrons to the electron transport chain for ATP production.'},
+  {cat:'w6', q:'Catabolic vs. anabolic pathways?', a:'Catabolic = break down molecules, release energy (e.g., cellular respiration). Anabolic = build up molecules, require energy (e.g., photosynthesis).'},
+  {cat:'w6', q:'What is the equation for photosynthesis?', a:'6CO\u2082 + 6H\u2082O + light energy \u2192 C\u2086H\u2081\u2082O\u2086 (glucose) + 6O\u2082'},
   {cat:'w6', q:'Where do light-dependent reactions occur?', a:'In the thylakoid membranes of the chloroplast.'},
-  {cat:'w6', q:'What do light-dependent reactions produce?', a:'ATP, NADPH, and O₂ (from splitting water).'},
+  {cat:'w6', q:'What do light-dependent reactions produce?', a:'ATP, NADPH, and O\u2082 (from splitting water/photolysis).'},
   {cat:'w6', q:'Where does the Calvin Cycle occur?', a:'In the stroma of the chloroplast.'},
-  {cat:'w6', q:'What does the Calvin Cycle do?', a:'Uses ATP and NADPH from light reactions to fix CO₂ into organic molecules (glucose). Key enzyme: RuBisCO.'},
+  {cat:'w6', q:'What does the Calvin Cycle do?', a:'Uses ATP and NADPH from light reactions to fix CO\u2082 into organic molecules (G3P \u2192 glucose). Key enzyme: RuBisCO.'},
   {cat:'w6', q:'Why are plants green?', a:'Chlorophyll absorbs red and blue light and reflects green wavelengths.'},
-  {cat:'w6', q:'What is the equation for cellular respiration?', a:'C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP (energy)'},
+  {cat:'w6', q:'What is the equation for cellular respiration?', a:'C\u2086H\u2081\u2082O\u2086 + 6O\u2082 \u2192 6CO\u2082 + 6H\u2082O + ATP (energy)'},
   {cat:'w6', q:'What are the 3 stages of cellular respiration?', a:'1) Glycolysis (cytoplasm, 2 ATP) 2) Krebs Cycle (mitochondrial matrix, 2 ATP) 3) Electron Transport Chain (inner mitochondrial membrane, ~34 ATP)'},
-  {cat:'w6', q:'Where does glycolysis occur and what does it produce?', a:'In the cytoplasm. Converts 1 glucose → 2 pyruvate + 2 NADH + 2 ATP (net).'},
-  {cat:'w6', q:'What is special about glycolysis compared to other stages?', a:'Glycolysis does NOT require oxygen — it is the only stage that can occur anaerobically.'},
-  {cat:'w6', q:'What is the total ATP yield from cellular respiration?', a:'~36–38 ATP per glucose molecule.'},
-  {cat:'w6', q:'What is lactic acid fermentation?', a:'Anaerobic process in muscle cells that converts pyruvate to lactic acid, yielding only 2 ATP (from glycolysis).'},
-  {cat:'w6', q:'What is alcoholic fermentation?', a:'Anaerobic process in yeast that converts pyruvate to ethanol + CO₂, yielding only 2 ATP.'},
-  {cat:'w6', q:'What are the base pairing rules for DNA?', a:'Adenine (A) pairs with Thymine (T) — 2 H-bonds. Guanine (G) pairs with Cytosine (C) — 3 H-bonds.'},
-  {cat:'w6', q:'What is semiconservative replication?', a:'Each new DNA molecule consists of one original (old) strand and one newly synthesized strand.'},
-  {cat:'w6', q:'What enzyme is key in DNA replication?', a:'DNA polymerase — adds nucleotides to build the new strand in the 5\' → 3\' direction.'},
-  {cat:'w6', q:'What is the Central Dogma of Molecular Biology?', a:'DNA → (transcription) → mRNA → (translation) → Protein'},
-  {cat:'w6', q:'Where does transcription occur and what does it produce?', a:'In the nucleus. DNA is used as a template to produce mRNA, catalyzed by RNA polymerase.'},
-  {cat:'w6', q:'How does RNA differ from DNA?', a:'RNA is single-stranded, uses ribose sugar (not deoxyribose), and uses Uracil (U) instead of Thymine (T).'},
-  {cat:'w6', q:'Where does translation occur?', a:'At ribosomes in the cytoplasm (or on rough ER).'},
-  {cat:'w6', q:'What is a codon?', a:'A 3-nucleotide sequence on mRNA that codes for a specific amino acid. Read by complementary tRNA anticodons.'},
-  {cat:'w6', q:'What is the start codon and what amino acid does it code for?', a:'AUG — codes for methionine (Met). Signals the beginning of translation.'},
-  {cat:'w6', q:'What are the 3 stop codons?', a:'UAA, UAG, UGA — they do not code for any amino acid; they signal the end of translation.'},
-  {cat:'w6', q:'What is a missense mutation?', a:'A point mutation that results in a different amino acid being incorporated into the protein.'},
-  {cat:'w6', q:'What is a nonsense mutation?', a:'A point mutation that creates a premature stop codon, resulting in a shortened (truncated) protein.'},
-  {cat:'w6', q:'What is a frameshift mutation?', a:'An insertion or deletion of nucleotides that shifts the reading frame, usually the most damaging type of mutation.'},
-  {cat:'w6', q:'Which type of mutation is generally most damaging?', a:'Frameshift mutations (insertions/deletions) because they alter every codon downstream of the mutation.'},
+  {cat:'w6', q:'Where does glycolysis occur and what does it produce?', a:'In the cytoplasm. Converts 1 glucose (6C) \u2192 2 pyruvate (3C) + 2 NADH + 2 ATP (net).'},
+  {cat:'w6', q:'What is special about glycolysis?', a:'It does NOT require oxygen \u2014 the only stage that can occur anaerobically. Ancient pathway found in all living cells.'},
+  {cat:'w6', q:'What is the total ATP yield from cellular respiration?', a:'~36\u201338 ATP per glucose molecule.'},
+  {cat:'w6', q:'What is lactic acid fermentation?', a:'Anaerobic process in muscle cells: pyruvate \u2192 lactic acid. Regenerates NAD+ so glycolysis can continue. Only 2 ATP total.'},
+  {cat:'w6', q:'What is alcoholic fermentation?', a:'Anaerobic process in yeast: pyruvate \u2192 ethanol + CO\u2082. Used in bread rising and brewing. Only 2 ATP total.'},
+  {cat:'w6', q:'What is RuBisCO?', a:'Ribulose bisphosphate carboxylase/oxygenase \u2014 the enzyme that fixes CO\u2082 in the Calvin Cycle. Most abundant enzyme on Earth.'},
+  {cat:'w6', q:'What is the role of O\u2082 in cellular respiration?', a:'Oxygen is the final electron acceptor in the electron transport chain. Without it, the ETC stops and only fermentation can occur.'},
+  {cat:'w6', q:'What are cofactors and coenzymes?', a:'Helper molecules for enzymes. Cofactors are inorganic (e.g., metal ions). Coenzymes are organic (e.g., vitamins like NAD+).'},
 ];
 
 /* ===== FLASHCARD ENGINE ===== */
 let fcCards = [...FC_DATA], fcIdx = 0, fcKnow = 0, fcDunno = 0;
-
 function fcRender() {
   const card = fcCards[fcIdx];
   document.getElementById('fcTerm').textContent = card.q;
@@ -777,19 +901,17 @@ function fcMark(know) {
   else { document.getElementById('fcScore').textContent = 'Done! Know: ' + fcKnow + ' | Still Learning: ' + fcDunno + ' out of ' + fcCards.length; }
 }
 function fcShuffle() {
-  for (let i = fcCards.length-1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [fcCards[i],fcCards[j]] = [fcCards[j],fcCards[i]]; }
-  fcIdx = 0; fcKnow = 0; fcDunno = 0; fcRender();
+  shuffleArr(fcCards); fcIdx = 0; fcKnow = 0; fcDunno = 0; fcRender();
 }
 function fcSetCategory(cat, btn) {
-  document.querySelectorAll('#fcCategoryBtns button').forEach(b => b.classList.remove('fc-active'));
-  btn.classList.add('fc-active');
+  document.querySelectorAll('#fcCategoryBtns button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
   fcCards = cat === 'all' ? [...FC_DATA] : FC_DATA.filter(c => c.cat === cat);
   fcIdx = 0; fcKnow = 0; fcDunno = 0; fcRender();
 }
 
-/* ===== QUIZ ENGINE ===== */
+/* ===== QUIZ DATA ===== */
 const QUIZ_DATA = [
-  // Week 4
   {cat:'w4', q:'Which organelle is known as the "powerhouse of the cell"?', opts:['Golgi apparatus','Mitochondria','Nucleus','Ribosome'], ans:1, exp:'Mitochondria produce ATP through cellular respiration, providing the cell with energy.'},
   {cat:'w4', q:'Which type of cell has membrane-bound organelles?', opts:['Prokaryotic','Eukaryotic','Both','Neither'], ans:1, exp:'Eukaryotic cells are defined by having membrane-bound organelles, including a true nucleus.'},
   {cat:'w4', q:'The Fluid Mosaic Model describes:', opts:['How DNA replicates','The structure of the plasma membrane','Cytoplasm composition','Cell division'], ans:1, exp:'The Fluid Mosaic Model describes how proteins float and move within the phospholipid bilayer.'},
@@ -800,64 +922,54 @@ const QUIZ_DATA = [
   {cat:'w4', q:'Which cytoskeleton component is made of tubulin?', opts:['Microfilaments','Intermediate filaments','Microtubules','Actin fibers'], ans:2, exp:'Microtubules are hollow tubes made of tubulin protein, involved in cell division and transport.'},
   {cat:'w4', q:'What is the smallest unit of life?', opts:['Atom','Molecule','Organelle','Cell'], ans:3, exp:'The cell is the smallest unit that can carry out all functions of life.'},
   {cat:'w4', q:'Rough ER differs from Smooth ER because it:', opts:['Has no membrane','Is found only in prokaryotes','Has ribosomes attached to its surface','Produces lipids'], ans:2, exp:'Rough ER is "rough" because it is studded with ribosomes that synthesize proteins.'},
+  {cat:'w4', q:'Which is NOT found in animal cells?', opts:['Mitochondria','Cell wall','Ribosomes','Lysosomes'], ans:1, exp:'Animal cells do not have a cell wall. Plant cells have a cell wall made of cellulose.'},
+  {cat:'w4', q:'What organelle detoxifies hydrogen peroxide?', opts:['Lysosome','Peroxisome','Smooth ER','Golgi apparatus'], ans:1, exp:'Peroxisomes break down fatty acids and detoxify harmful substances like hydrogen peroxide.'},
 
-  // Week 5
   {cat:'w5', q:'In a hypertonic solution, a cell will:', opts:['Swell and burst','Shrivel/crenate','Stay the same','Divide'], ans:1, exp:'In a hypertonic solution, water leaves the cell by osmosis, causing it to shrivel (crenation in animal cells).'},
   {cat:'w5', q:'Osmosis is specifically the movement of:', opts:['Solute across a membrane','Water across a selectively permeable membrane','Ions through channels','Proteins through pores'], ans:1, exp:'Osmosis is the diffusion of water (not solute) across a selectively permeable membrane.'},
-  {cat:'w5', q:'The sodium-potassium pump is an example of:', opts:['Passive transport','Osmosis','Active transport','Facilitated diffusion'], ans:2, exp:'The Na+/K+ pump uses ATP to move ions against their concentration gradient — this is active transport.'},
-  {cat:'w5', q:'Which is NOT a type of endocytosis?', opts:['Phagocytosis','Pinocytosis','Exocytosis','Receptor-mediated endocytosis'], ans:2, exp:'Exocytosis is the opposite — it releases materials from the cell. Phagocytosis, pinocytosis, and receptor-mediated endocytosis are all types of endocytosis.'},
+  {cat:'w5', q:'The sodium-potassium pump is an example of:', opts:['Passive transport','Osmosis','Active transport','Facilitated diffusion'], ans:2, exp:'The Na+/K+ pump uses ATP to move ions against their concentration gradient \u2014 this is active transport.'},
+  {cat:'w5', q:'Which is NOT a type of endocytosis?', opts:['Phagocytosis','Pinocytosis','Exocytosis','Receptor-mediated endocytosis'], ans:2, exp:'Exocytosis is the opposite \u2014 it releases materials from the cell.'},
   {cat:'w5', q:'DNA replication occurs during which phase?', opts:['G1','S phase','G2','M phase'], ans:1, exp:'DNA is replicated during the S (Synthesis) phase of interphase.'},
   {cat:'w5', q:'Mitosis produces:', opts:['4 haploid cells','2 diploid identical cells','4 diploid cells','2 haploid cells'], ans:1, exp:'Mitosis produces 2 genetically identical diploid daughter cells for growth and repair.'},
-  {cat:'w5', q:'Crossing over occurs during:', opts:['Metaphase','Prophase I of meiosis','Anaphase II','Telophase'], ans:1, exp:'Crossing over (exchange of genetic material between homologous chromosomes) occurs during Prophase I of meiosis.'},
+  {cat:'w5', q:'Crossing over occurs during:', opts:['Metaphase','Prophase I of meiosis','Anaphase II','Telophase'], ans:1, exp:'Crossing over occurs during Prophase I of meiosis when homologous chromosomes exchange genetic material.'},
   {cat:'w5', q:'What separates during Anaphase I of meiosis?', opts:['Sister chromatids','Homologous chromosomes','Cell membrane','Nuclear envelope'], ans:1, exp:'During Anaphase I, homologous chromosomes separate. Sister chromatids separate later in Anaphase II.'},
-  {cat:'w5', q:'Which is the correct order of mitosis?', opts:['Metaphase, Prophase, Anaphase, Telophase','Prophase, Metaphase, Anaphase, Telophase','Prophase, Anaphase, Metaphase, Telophase','Telophase, Anaphase, Metaphase, Prophase'], ans:1, exp:'PMAT: Prophase → Metaphase → Anaphase → Telophase.'},
+  {cat:'w5', q:'Which is the correct order of mitosis?', opts:['Metaphase, Prophase, Anaphase, Telophase','Prophase, Metaphase, Anaphase, Telophase','Prophase, Anaphase, Metaphase, Telophase','Telophase, Anaphase, Metaphase, Prophase'], ans:1, exp:'PMAT: Prophase \u2192 Metaphase \u2192 Anaphase \u2192 Telophase.'},
   {cat:'w5', q:'Plant cells divide their cytoplasm using a:', opts:['Cleavage furrow','Cell plate','Contractile ring','Spindle apparatus'], ans:1, exp:'Plant cells form a cell plate between daughter cells. Animal cells use a cleavage furrow.'},
-  {cat:'w5', q:'Facilitated diffusion requires:', opts:['ATP','Transport proteins','Both ATP and transport proteins','Neither'], ans:1, exp:'Facilitated diffusion uses transport proteins but does NOT require ATP — it is still passive transport.'},
-  {cat:'w5', q:'The ultimate source of new genetic variation is:', opts:['Crossing over','Independent assortment','Random fertilization','Mutation'], ans:3, exp:'While crossing over, independent assortment, and fertilization shuffle existing alleles, mutations create entirely new alleles.'},
+  {cat:'w5', q:'Facilitated diffusion requires:', opts:['ATP','Transport proteins','Both ATP and transport proteins','Neither'], ans:1, exp:'Facilitated diffusion uses transport proteins but does NOT require ATP \u2014 it is still passive transport.'},
+  {cat:'w5', q:'The ultimate source of new genetic variation is:', opts:['Crossing over','Independent assortment','Random fertilization','Mutation'], ans:3, exp:'While crossing over and independent assortment shuffle existing alleles, mutations create entirely new alleles.'},
+  {cat:'w5', q:'A plant cell in a hypotonic solution becomes:', opts:['Crenated','Lysed','Turgid','Plasmolyzed'], ans:2, exp:'Plant cells in a hypotonic solution become turgid (firm) because the cell wall prevents bursting.'},
+  {cat:'w5', q:'What is a tetrad?', opts:['4 daughter cells','4 chromatids paired during Prophase I','A type of protein','4 spindle fibers'], ans:1, exp:'A tetrad is the structure formed when homologous chromosomes pair up (synapsis) during Prophase I, consisting of 4 chromatids.'},
 
-  // Week 6
-  {cat:'w6', q:'Enzymes are best described as:', opts:['Lipid hormones','Biological catalysts (proteins)','Nucleic acids','Carbohydrate stores'], ans:1, exp:'Enzymes are proteins that speed up chemical reactions without being consumed — they are biological catalysts.'},
+  {cat:'w6', q:'Enzymes are best described as:', opts:['Lipid hormones','Biological catalysts (proteins)','Nucleic acids','Carbohydrate stores'], ans:1, exp:'Enzymes are proteins that speed up chemical reactions without being consumed \u2014 they are biological catalysts.'},
   {cat:'w6', q:'A competitive inhibitor works by:', opts:['Binding the allosteric site','Binding the active site','Destroying the enzyme','Increasing substrate concentration'], ans:1, exp:'Competitive inhibitors compete with the substrate for the active site of the enzyme.'},
   {cat:'w6', q:'Glycolysis occurs in the:', opts:['Mitochondrial matrix','Inner mitochondrial membrane','Cytoplasm','Nucleus'], ans:2, exp:'Glycolysis takes place in the cytoplasm and does not require oxygen.'},
   {cat:'w6', q:'How many net ATP are produced by glycolysis?', opts:['0','2','4','36'], ans:1, exp:'Glycolysis produces a net of 2 ATP per glucose molecule.'},
   {cat:'w6', q:'The Krebs Cycle takes place in the:', opts:['Cytoplasm','Thylakoid membrane','Mitochondrial matrix','Smooth ER'], ans:2, exp:'The Krebs (Citric Acid) Cycle occurs in the mitochondrial matrix.'},
   {cat:'w6', q:'Which stage of cellular respiration produces the most ATP?', opts:['Glycolysis','Krebs Cycle','Electron Transport Chain','Fermentation'], ans:2, exp:'The ETC produces ~34 of the ~36-38 total ATP from cellular respiration.'},
   {cat:'w6', q:'Light-dependent reactions of photosynthesis occur in:', opts:['Stroma','Thylakoid membranes','Cytoplasm','Mitochondria'], ans:1, exp:'Light-dependent reactions occur in the thylakoid membranes where chlorophyll absorbs light energy.'},
-  {cat:'w6', q:'The Calvin Cycle uses which inputs?', opts:['Glucose and O₂','ATP and NADPH','Light and water','NADH and FADH₂'], ans:1, exp:'The Calvin Cycle uses ATP and NADPH (from the light reactions) to fix CO₂ into glucose.'},
-  {cat:'w6', q:'In DNA, Adenine pairs with:', opts:['Cytosine','Guanine','Thymine','Uracil'], ans:2, exp:'A-T (2 hydrogen bonds) and G-C (3 hydrogen bonds) are the DNA base pairing rules.'},
-  {cat:'w6', q:'RNA uses which base instead of thymine?', opts:['Adenine','Guanine','Cytosine','Uracil'], ans:3, exp:'RNA uses Uracil (U) in place of Thymine (T). So A pairs with U in RNA.'},
-  {cat:'w6', q:'The start codon AUG codes for:', opts:['Leucine','Methionine','Stop signal','Tryptophan'], ans:1, exp:'AUG is the universal start codon and codes for methionine (Met).'},
-  {cat:'w6', q:'Which type of mutation shifts the reading frame?', opts:['Silent','Missense','Nonsense','Frameshift'], ans:3, exp:'Frameshift mutations (insertions or deletions) shift the entire reading frame, affecting every downstream codon.'},
-  {cat:'w6', q:'Transcription produces:', opts:['DNA','mRNA','Protein','tRNA'], ans:1, exp:'Transcription copies a gene from DNA into mRNA, which then carries the message to the ribosome.'},
-  {cat:'w6', q:'Where does translation occur?', opts:['Nucleus','Mitochondria','Ribosomes','Golgi apparatus'], ans:2, exp:'Translation occurs at ribosomes (in cytoplasm or on rough ER), where mRNA is decoded into a protein.'},
-  {cat:'w6', q:'Fermentation yields how many ATP?', opts:['0','2','36','38'], ans:1, exp:'Fermentation only yields 2 ATP (from glycolysis alone), since the ETC cannot run without oxygen.'},
-  {cat:'w6', q:'DNA replication is described as semiconservative because:', opts:['Both strands are new','Each new molecule has one old and one new strand','Only one strand is copied','It occurs twice'], ans:1, exp:'Semiconservative means each daughter DNA molecule contains one original parent strand and one newly synthesized strand.'},
-  {cat:'w6', q:'Which enzyme fixes CO₂ in the Calvin Cycle?', opts:['DNA polymerase','RNA polymerase','RuBisCO','ATP synthase'], ans:2, exp:'RuBisCO (ribulose bisphosphate carboxylase/oxygenase) is the enzyme that fixes CO₂ into organic molecules in the Calvin Cycle.'},
+  {cat:'w6', q:'The Calvin Cycle uses which inputs?', opts:['Glucose and O\u2082','ATP and NADPH','Light and water','NADH and FADH\u2082'], ans:1, exp:'The Calvin Cycle uses ATP and NADPH (from the light reactions) to fix CO\u2082 into glucose.'},
   {cat:'w6', q:'Chlorophyll appears green because it:', opts:['Absorbs green light','Reflects green light','Emits green light','Destroys green light'], ans:1, exp:'Chlorophyll absorbs red and blue wavelengths and reflects green, which is why plants appear green.'},
+  {cat:'w6', q:'Fermentation yields how many ATP?', opts:['0','2','36','38'], ans:1, exp:'Fermentation only yields 2 ATP (from glycolysis alone), since the ETC cannot run without oxygen.'},
+  {cat:'w6', q:'Which enzyme fixes CO\u2082 in the Calvin Cycle?', opts:['DNA polymerase','RNA polymerase','RuBisCO','ATP synthase'], ans:2, exp:'RuBisCO is the enzyme that fixes CO\u2082 into organic molecules in the Calvin Cycle.'},
+  {cat:'w6', q:'What happens when an enzyme is denatured?', opts:['It works faster','Its active site shape is destroyed','It gains a new function','Nothing'], ans:1, exp:'Denaturation unfolds the enzyme, destroying its active site shape and function permanently.'},
+  {cat:'w6', q:'Oxygen serves as the final electron acceptor in:', opts:['Glycolysis','Calvin Cycle','Electron Transport Chain','Fermentation'], ans:2, exp:'In the ETC, oxygen accepts electrons at the end of the chain, combining with H+ to form water.'},
+  {cat:'w6', q:'Which pathway is catabolic?', opts:['Photosynthesis','Calvin Cycle','Cellular respiration','Protein synthesis'], ans:2, exp:'Catabolic pathways break down molecules and release energy. Cellular respiration breaks down glucose.'},
 ];
 
+/* ===== QUIZ ENGINE ===== */
 let quizQuestions = [], quizIdx = 0, quizCorrect = 0, quizAnswered = false;
-
 function quizSetCategory(cat, btn) {
-  document.querySelectorAll('#quizCategoryBtns button').forEach(b => b.classList.remove('fc-active'));
-  btn.classList.add('fc-active');
-  quizQuestions = (cat === 'all' ? [...QUIZ_DATA] : QUIZ_DATA.filter(q => q.cat === cat));
-  shuffleArr(quizQuestions);
-  quizIdx = 0; quizCorrect = 0; quizAnswered = false;
-  renderQuiz();
+  document.querySelectorAll('#quizCategoryBtns button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  quizQuestions = shuffleArr(cat === 'all' ? [...QUIZ_DATA] : QUIZ_DATA.filter(q => q.cat === cat));
+  quizIdx = 0; quizCorrect = 0; quizAnswered = false; renderQuiz();
 }
-function quizRestart() {
-  shuffleArr(quizQuestions);
-  quizIdx = 0; quizCorrect = 0; quizAnswered = false;
-  renderQuiz();
-}
-function shuffleArr(arr) { for (let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];} }
-
+function quizRestart() { shuffleArr(quizQuestions); quizIdx = 0; quizCorrect = 0; quizAnswered = false; renderQuiz(); }
 function renderQuiz() {
   const area = document.getElementById('quizArea');
   if (quizIdx >= quizQuestions.length) {
     const pct = Math.round(quizCorrect/quizQuestions.length*100);
-    area.innerHTML = '<div class="game-complete"><h2>Quiz Complete!</h2><div class="final-score">'+quizCorrect+' / '+quizQuestions.length+' ('+pct+'%)</div><p>'+(pct>=80?'Great job!':pct>=60?'Good effort — review the ones you missed!':'Keep studying — you\'ve got this!')+'</p></div>';
+    area.innerHTML = '<div class="game-complete"><h2>Quiz Complete!</h2><div class="final-score">'+quizCorrect+' / '+quizQuestions.length+' ('+pct+'%)</div><p>'+(pct>=80?'Great job!':pct>=60?'Good effort \u2014 review the ones you missed!':'Keep studying \u2014 you\'ve got this!')+'</p></div>';
     return;
   }
   const q = quizQuestions[quizIdx];
@@ -865,20 +977,14 @@ function renderQuiz() {
   let html = '<div class="quiz-progress">Question '+(quizIdx+1)+' of '+quizQuestions.length+'</div>';
   html += '<div class="quiz-score-bar"><div class="quiz-score-fill" style="width:'+pct+'%"></div></div>';
   html += '<div class="quiz-q">'+q.q+'</div><div class="quiz-options">';
-  q.opts.forEach((opt,i) => {
-    html += '<div class="quiz-opt" onclick="quizAnswer('+i+')" data-idx="'+i+'">'+String.fromCharCode(65+i)+'. '+opt+'</div>';
-  });
+  q.opts.forEach((opt,i) => { html += '<div class="quiz-opt" onclick="quizAnswer('+i+')" data-idx="'+i+'">'+String.fromCharCode(65+i)+'. '+opt+'</div>'; });
   html += '</div><div class="quiz-explanation" id="quizExp">'+q.exp+'</div>';
-  html += '<div class="quiz-nav"><button onclick="quizNext()" id="quizNextBtn" disabled>Next Question &rarr;</button></div>';
-  area.innerHTML = html;
-  quizAnswered = false;
+  html += '<div class="quiz-nav"><button class="green-btn" onclick="quizNext()" id="quizNextBtn" disabled>Next Question &rarr;</button></div>';
+  area.innerHTML = html; quizAnswered = false;
 }
-
 function quizAnswer(idx) {
-  if (quizAnswered) return;
-  quizAnswered = true;
-  const q = quizQuestions[quizIdx];
-  const opts = document.querySelectorAll('.quiz-opt');
+  if (quizAnswered) return; quizAnswered = true;
+  const q = quizQuestions[quizIdx]; const opts = document.querySelectorAll('.quiz-opt');
   opts[idx].classList.add(idx === q.ans ? 'q-correct' : 'q-wrong');
   opts[q.ans].classList.add('q-correct');
   if (idx === q.ans) quizCorrect++;
@@ -887,7 +993,122 @@ function quizAnswer(idx) {
 }
 function quizNext() { quizIdx++; renderQuiz(); }
 
-/* ===== MATCHING GAME ENGINE ===== */
+/* ===== TRUE/FALSE DATA & ENGINE ===== */
+const TF_DATA = [
+  {cat:'w4', s:'The cell is the smallest unit of life.', ans:true, exp:'Correct! Cells are the smallest structures that can perform all functions necessary for life.'},
+  {cat:'w4', s:'Prokaryotic cells have a membrane-bound nucleus.', ans:false, exp:'Prokaryotes do NOT have a membrane-bound nucleus. Their DNA is in a nucleoid region.'},
+  {cat:'w4', s:'Ribosomes are responsible for protein synthesis.', ans:true, exp:'Correct! Ribosomes manufacture proteins in all cells.'},
+  {cat:'w4', s:'The Smooth ER is studded with ribosomes.', ans:false, exp:'The ROUGH ER has ribosomes. Smooth ER handles lipid synthesis and detoxification.'},
+  {cat:'w4', s:'Mitochondria have their own DNA.', ans:true, exp:'Correct! This supports the endosymbiont theory that mitochondria were once free-living prokaryotes.'},
+  {cat:'w4', s:'Lysosomes build new proteins for the cell.', ans:false, exp:'Lysosomes BREAK DOWN waste and debris. Ribosomes (and rough ER) build proteins.'},
+  {cat:'w4', s:'Plant cells have a cell wall made of cellulose.', ans:true, exp:'Correct! Plant cell walls are cellulose. Prokaryotic cell walls are peptidoglycan.'},
+  {cat:'w4', s:'Animal cells typically have a large central vacuole.', ans:false, exp:'PLANT cells have a large central vacuole. Animal cells have small or no vacuoles.'},
+  {cat:'w4', s:'Microfilaments are made of tubulin protein.', ans:false, exp:'Microfilaments are made of ACTIN. MICROTUBULES are made of tubulin.'},
+  {cat:'w4', s:'The Golgi apparatus modifies and packages proteins.', ans:true, exp:'Correct! The Golgi is the cell\'s "shipping department."'},
+  {cat:'w4', s:'Bacteria are an example of eukaryotic organisms.', ans:false, exp:'Bacteria are PROKARYOTES. They lack membrane-bound organelles and a true nucleus.'},
+  {cat:'w5', s:'Osmosis is the diffusion of water across a selectively permeable membrane.', ans:true, exp:'Correct! Osmosis specifically refers to water movement from low solute to high solute concentration.'},
+  {cat:'w5', s:'In a hypotonic solution, a cell will shrivel.', ans:false, exp:'In a HYPOTONIC solution, water enters the cell and it SWELLS. It shrivels in a HYPERTONIC solution.'},
+  {cat:'w5', s:'Active transport requires ATP energy.', ans:true, exp:'Correct! Active transport moves substances against their concentration gradient, requiring ATP.'},
+  {cat:'w5', s:'Facilitated diffusion requires energy from ATP.', ans:false, exp:'Facilitated diffusion is PASSIVE \u2014 it uses transport proteins but does NOT require ATP.'},
+  {cat:'w5', s:'The sodium-potassium pump moves 3 Na+ out and 2 K+ in.', ans:true, exp:'Correct! The Na+/K+ ATPase pumps 3 sodium ions out and 2 potassium ions in per ATP used.'},
+  {cat:'w5', s:'Phagocytosis means "cell drinking."', ans:false, exp:'Phagocytosis means "cell EATING" (solid particles). PINOCYTOSIS means "cell drinking."'},
+  {cat:'w5', s:'Interphase consists of G1, S, and G2 phases.', ans:true, exp:'Correct! The cell spends about 90% of its time in interphase (G1 + S + G2).'},
+  {cat:'w5', s:'Mitosis produces 4 haploid daughter cells.', ans:false, exp:'MEIOSIS produces 4 haploid cells. Mitosis produces 2 DIPLOID identical cells.'},
+  {cat:'w5', s:'Crossing over occurs during Prophase I of meiosis.', ans:true, exp:'Correct! Homologous chromosomes exchange genetic material during Prophase I.'},
+  {cat:'w5', s:'Sister chromatids separate during Anaphase I.', ans:false, exp:'HOMOLOGOUS CHROMOSOMES separate in Anaphase I. Sister chromatids separate in Anaphase II.'},
+  {cat:'w5', s:'The PMAT sequence stands for Prophase, Metaphase, Anaphase, Telophase.', ans:true, exp:'Correct! PMAT is the order of mitosis phases.'},
+  {cat:'w5', s:'Animal cells form a cell plate during cytokinesis.', ans:false, exp:'PLANT cells form a cell plate. Animal cells use a cleavage furrow.'},
+  {cat:'w5', s:'Mutation is the ultimate source of new genetic variation.', ans:true, exp:'Correct! While crossing over and independent assortment shuffle existing alleles, only mutations create entirely new ones.'},
+  {cat:'w6', s:'Enzymes are consumed in the reactions they catalyze.', ans:false, exp:'Enzymes are NOT consumed \u2014 they are reusable and emerge unchanged after the reaction.'},
+  {cat:'w6', s:'Competitive inhibitors bind to the active site of an enzyme.', ans:true, exp:'Correct! They compete directly with the substrate for the active site.'},
+  {cat:'w6', s:'Glycolysis requires oxygen to proceed.', ans:false, exp:'Glycolysis does NOT require oxygen. It occurs in the cytoplasm and is the only stage that works anaerobically.'},
+  {cat:'w6', s:'The Calvin Cycle occurs in the thylakoid membranes.', ans:false, exp:'The Calvin Cycle occurs in the STROMA. Light-dependent reactions occur in the thylakoid membranes.'},
+  {cat:'w6', s:'Cellular respiration produces approximately 36-38 ATP per glucose.', ans:true, exp:'Correct! Glycolysis (2) + Krebs (2) + ETC (~34) = ~36-38 ATP total.'},
+  {cat:'w6', s:'Fermentation is more efficient than aerobic respiration.', ans:false, exp:'Fermentation produces only 2 ATP vs. ~36-38 ATP from aerobic respiration. It is far LESS efficient.'},
+  {cat:'w6', s:'Photosynthesis occurs in mitochondria.', ans:false, exp:'Photosynthesis occurs in CHLOROPLASTS. Cellular respiration occurs in mitochondria.'},
+  {cat:'w6', s:'RuBisCO is the enzyme that fixes CO\u2082 in the Calvin Cycle.', ans:true, exp:'Correct! RuBisCO is the most abundant enzyme on Earth and is essential for carbon fixation.'},
+  {cat:'w6', s:'Chlorophyll absorbs green light most efficiently.', ans:false, exp:'Chlorophyll absorbs RED and BLUE light. It REFLECTS green, which is why plants look green.'},
+  {cat:'w6', s:'ATP releases energy when it loses a phosphate group to become ADP.', ans:true, exp:'Correct! The high-energy bond between the 2nd and 3rd phosphate is broken to release energy.'},
+  {cat:'w6', s:'Lactic acid fermentation occurs in yeast cells.', ans:false, exp:'Lactic acid fermentation occurs in MUSCLE cells (and some bacteria). ALCOHOLIC fermentation occurs in yeast.'},
+  {cat:'w6', s:'Denaturation permanently destroys an enzyme\'s function.', ans:true, exp:'Correct! Extreme heat or pH unfolds the enzyme, destroying its active site shape.'},
+];
+
+let tfItems=[], tfIdx=0, tfCorrect=0, tfWrong=0, tfStreak=0, tfAnswered=false;
+function tfSetCat(cat,btn){
+  document.querySelectorAll('#tfCatBtns button').forEach(b=>b.classList.remove('on')); btn.classList.add('on');
+  tfItems=shuffleArr(cat==='all'?[...TF_DATA]:TF_DATA.filter(t=>t.cat===cat));
+  tfIdx=0;tfCorrect=0;tfWrong=0;tfStreak=0;tfAnswered=false;renderTF();
+}
+function tfRestart(){shuffleArr(tfItems);tfIdx=0;tfCorrect=0;tfWrong=0;tfStreak=0;tfAnswered=false;renderTF();}
+function renderTF(){
+  if(tfIdx>=tfItems.length){document.getElementById('tfStatement').textContent='All done! '+tfCorrect+' correct out of '+tfItems.length;document.getElementById('tfFeedback').className='tf-feedback';document.getElementById('tfFeedback').textContent='';document.getElementById('tfStreak').textContent='';document.getElementById('tfNextBtn').disabled=true;return;}
+  const t=tfItems[tfIdx];
+  document.getElementById('tfStatement').textContent=t.s;
+  document.getElementById('tfFeedback').className='tf-feedback';document.getElementById('tfFeedback').textContent='';
+  document.getElementById('tfProgress').textContent=(tfIdx+1)+' / '+tfItems.length;
+  document.getElementById('tfScoreDisplay').textContent='Correct: '+tfCorrect+' | Wrong: '+tfWrong;
+  document.getElementById('tfStreak').textContent=tfStreak>1?'Streak: '+tfStreak+'!':'';
+  document.getElementById('tfNextBtn').disabled=true;tfAnswered=false;
+}
+function tfAnswer(val){
+  if(tfAnswered)return;tfAnswered=true;
+  const t=tfItems[tfIdx],fb=document.getElementById('tfFeedback');
+  if(val===t.ans){tfCorrect++;tfStreak++;fb.className='tf-feedback correct-fb show';fb.textContent='\u2713 Correct! '+t.exp;}
+  else{tfWrong++;tfStreak=0;fb.className='tf-feedback wrong-fb show';fb.textContent='\u2717 Wrong. '+t.exp;}
+  document.getElementById('tfScoreDisplay').textContent='Correct: '+tfCorrect+' | Wrong: '+tfWrong;
+  document.getElementById('tfStreak').textContent=tfStreak>1?'Streak: '+tfStreak+'!':'';
+  document.getElementById('tfNextBtn').disabled=false;
+}
+function tfNextQ(){tfIdx++;renderTF();}
+
+/* ===== ORDERING GAME ===== */
+const ORDER_DATA = [
+  {cat:'w4', prompt:'Order the biological hierarchy from SMALLEST to LARGEST:', items:['Atom','Molecule','Organelle','Cell','Tissue','Organ','Organ System','Organism']},
+  {cat:'w5', prompt:'Order the phases of MITOSIS:', items:['Prophase','Metaphase','Anaphase','Telophase','Cytokinesis']},
+  {cat:'w5', prompt:'Order the CELL CYCLE phases:', items:['G1 (Gap 1)','S (Synthesis)','G2 (Gap 2)','Mitosis','Cytokinesis']},
+  {cat:'w5', prompt:'Order the phases of MEIOSIS I:', items:['Prophase I (synapsis + crossing over)','Metaphase I (tetrads align)','Anaphase I (homologs separate)','Telophase I + Cytokinesis']},
+  {cat:'w6', prompt:'Order the stages of CELLULAR RESPIRATION:', items:['Glycolysis (cytoplasm)','Pyruvate \u2192 Acetyl-CoA (transition)','Krebs Cycle (matrix)','Electron Transport Chain (inner membrane)','ATP Synthase (oxidative phosphorylation)']},
+  {cat:'w6', prompt:'Order the steps of PHOTOSYNTHESIS:', items:['Light absorbed by chlorophyll','Water split (photolysis) \u2192 O\u2082 released','ATP and NADPH produced','Calvin Cycle fixes CO\u2082','G3P assembled into glucose']},
+  {cat:'w6', prompt:'Order the enzyme-substrate process:', items:['Substrate approaches enzyme','Substrate binds to active site','Enzyme-substrate complex forms','Reaction occurs (activation energy lowered)','Product(s) released','Enzyme unchanged and ready to reuse']},
+  {cat:'w5', prompt:'Order transport types from LEAST to MOST energy required:', items:['Simple diffusion (no energy)','Osmosis (no energy)','Facilitated diffusion (no energy, uses proteins)','Active transport (ATP required)','Endocytosis/Exocytosis (ATP, membrane reshaping)']},
+];
+
+let orderItems=[], orderIdx=0;
+function orderSetCat(cat,btn){
+  document.querySelectorAll('#orderCatBtns button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  orderItems=shuffleArr(cat==='all'?[...ORDER_DATA]:ORDER_DATA.filter(o=>o.cat===cat));
+  orderIdx=0;renderOrder();
+}
+function renderOrder(){
+  const area=document.getElementById('orderArea');
+  if(orderIdx>=orderItems.length){area.innerHTML='<div class="game-complete"><h2>All ordering challenges complete!</h2><br><button class="green-btn" onclick="orderSetCat(\'all\',document.querySelector(\'#orderCatBtns .on\'))">Play Again</button></div>';return;}
+  const o=orderItems[orderIdx];
+  const shuffled=[...o.items];shuffleArr(shuffled);
+  let html='<div class="order-prompt">'+o.prompt+'</div><div class="order-items" id="orderItemsList">';
+  shuffled.forEach((item,i)=>{
+    html+='<div class="order-item" data-text="'+item.replace(/"/g,'&quot;')+'"><span class="order-num">'+(i+1)+'</span><span>'+item+'</span><span class="arrow-btns"><button onclick="orderMove(this,-1)">\u25B2</button><button onclick="orderMove(this,1)">\u25BC</button></span></div>';
+  });
+  html+='</div><div style="text-align:center"><button class="green-btn" onclick="orderCheck()">Check Order</button> <button class="green-btn" onclick="orderIdx++;renderOrder()" id="orderNextBtn" disabled style="margin-left:8px">Next Challenge &rarr;</button></div>';
+  area.innerHTML=html;
+}
+function orderMove(btn,dir){
+  const item=btn.closest('.order-item'),list=document.getElementById('orderItemsList'),items=[...list.children],idx=items.indexOf(item);
+  if(dir===-1&&idx>0){list.insertBefore(item,items[idx-1]);}
+  else if(dir===1&&idx<items.length-1){list.insertBefore(items[idx+1],item);}
+  [...list.children].forEach((el,i)=>el.querySelector('.order-num').textContent=i+1);
+}
+function orderCheck(){
+  const o=orderItems[orderIdx],list=document.getElementById('orderItemsList'),items=[...list.children];
+  let allCorrect=true;
+  items.forEach((el,i)=>{
+    const text=el.dataset.text;
+    if(text===o.items[i]){el.classList.add('o-correct');el.classList.remove('o-wrong');}
+    else{el.classList.add('o-wrong');el.classList.remove('o-correct');allCorrect=false;}
+  });
+  if(allCorrect)document.getElementById('orderNextBtn').disabled=false;
+}
+
+/* ===== MATCHING GAME ===== */
 const MATCH_DATA = [
   {cat:'w4', term:'Mitochondria', def:'Powerhouse of the cell; produces ATP via cellular respiration'},
   {cat:'w4', term:'Ribosome', def:'Manufactures proteins'},
@@ -899,131 +1120,201 @@ const MATCH_DATA = [
   {cat:'w4', term:'Plasma Membrane', def:'Phospholipid bilayer that controls what enters/exits cell'},
   {cat:'w4', term:'Cytoplasm', def:'Gel-like fluid filling the cell interior'},
   {cat:'w4', term:'Microtubules', def:'Tubulin fibers for division, transport, cilia/flagella'},
+  {cat:'w4', term:'Peroxisome', def:'Breaks down fatty acids; detoxifies hydrogen peroxide'},
+  {cat:'w4', term:'Chloroplast', def:'Site of photosynthesis; contains chlorophyll'},
   {cat:'w5', term:'Osmosis', def:'Diffusion of water across a selectively permeable membrane'},
   {cat:'w5', term:'Hypertonic', def:'Higher solute outside; cell shrivels'},
   {cat:'w5', term:'Hypotonic', def:'Lower solute outside; cell swells'},
   {cat:'w5', term:'Active Transport', def:'Moves substances against gradient; requires ATP'},
-  {cat:'w5', term:'Phagocytosis', def:'"Cell eating" — engulfs solid particles'},
+  {cat:'w5', term:'Phagocytosis', def:'"Cell eating" \u2014 engulfs solid particles'},
   {cat:'w5', term:'Exocytosis', def:'Vesicle fuses with membrane to release contents'},
   {cat:'w5', term:'Prophase', def:'Chromosomes condense; spindle forms; envelope breaks down'},
   {cat:'w5', term:'Metaphase', def:'Chromosomes line up at the cell equator'},
   {cat:'w5', term:'Anaphase', def:'Sister chromatids separate to opposite poles'},
   {cat:'w5', term:'Crossing Over', def:'Exchange of genetic material in Prophase I'},
+  {cat:'w5', term:'Independent Assortment', def:'Random orientation of homolog pairs at metaphase plate'},
   {cat:'w6', term:'Enzyme', def:'Biological catalyst; speeds reactions without being consumed'},
   {cat:'w6', term:'ATP', def:'Main energy currency of the cell'},
   {cat:'w6', term:'Glycolysis', def:'Breaks glucose into pyruvate in the cytoplasm; 2 ATP'},
-  {cat:'w6', term:'Krebs Cycle', def:'Occurs in mitochondrial matrix; produces NADH, FADH₂, CO₂'},
-  {cat:'w6', term:'Calvin Cycle', def:'Fixes CO₂ into glucose in the stroma using ATP and NADPH'},
+  {cat:'w6', term:'Krebs Cycle', def:'Occurs in mitochondrial matrix; produces NADH, FADH\u2082, CO\u2082'},
+  {cat:'w6', term:'Calvin Cycle', def:'Fixes CO\u2082 into glucose in the stroma using ATP and NADPH'},
   {cat:'w6', term:'Chlorophyll', def:'Green pigment that absorbs light for photosynthesis'},
-  {cat:'w6', term:'Transcription', def:'DNA → mRNA; occurs in the nucleus'},
-  {cat:'w6', term:'Translation', def:'mRNA → protein; occurs at ribosomes'},
-  {cat:'w6', term:'Frameshift Mutation', def:'Insertion/deletion that shifts the reading frame'},
-  {cat:'w6', term:'Start Codon (AUG)', def:'Signals beginning of translation; codes for methionine'},
+  {cat:'w6', term:'RuBisCO', def:'Enzyme that fixes CO\u2082 in the Calvin Cycle'},
+  {cat:'w6', term:'Competitive Inhibitor', def:'Binds active site; competes with substrate'},
+  {cat:'w6', term:'Fermentation', def:'Anaerobic pathway; yields only 2 ATP'},
+  {cat:'w6', term:'Denaturation', def:'Permanent loss of enzyme shape from extreme heat/pH'},
+  {cat:'w6', term:'ETC', def:'Inner mitochondrial membrane; produces ~34 ATP using O\u2082'},
 ];
 
-let gamePairs = [], gameSelected = null, gameMatched = 0, gameAttempts = 0, gameTimer = 0, gameInterval = null;
-
-function gameSetCategory(cat, btn) {
-  document.querySelectorAll('#gameCategoryBtns button').forEach(b => b.classList.remove('gm-active'));
-  btn.classList.add('gm-active');
-  const pool = cat === 'all' ? [...MATCH_DATA] : MATCH_DATA.filter(m => m.cat === cat);
-  shuffleArr(pool);
-  gamePairs = pool.slice(0, 8); // 8 pairs per round
-  gameMatched = 0; gameAttempts = 0; gameSelected = null;
-  gameTimer = 0;
-  if (gameInterval) clearInterval(gameInterval);
-  gameInterval = setInterval(() => { gameTimer++; updateGameHeader(); }, 1000);
+let gamePairs=[], gameSelected=null, gameMatched=0, gameAttempts=0, gameTimer=0, gameInterval=null;
+function gameSetCategory(cat, btn){
+  document.querySelectorAll('#gameCategoryBtns button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  const pool=shuffleArr(cat==='all'?[...MATCH_DATA]:MATCH_DATA.filter(m=>m.cat===cat));
+  gamePairs=pool.slice(0,8);gameMatched=0;gameAttempts=0;gameSelected=null;gameTimer=0;
+  if(gameInterval)clearInterval(gameInterval);
+  gameInterval=setInterval(()=>{gameTimer++;const el=document.getElementById('gameTimerDisplay');if(el){const m=Math.floor(gameTimer/60),s=gameTimer%60;el.textContent=m+':'+(s<10?'0':'')+s;}},1000);
   renderGame();
 }
-
-function updateGameHeader() {
-  const el = document.getElementById('gameTimerDisplay');
-  if (el) { const m = Math.floor(gameTimer/60); const s = gameTimer%60; el.textContent = m+':'+(s<10?'0':'')+s; }
+function renderGame(){
+  const area=document.getElementById('gameArea');
+  const terms=shuffleArr(gamePairs.map((p,i)=>({text:p.term,idx:i})));
+  const defs=shuffleArr(gamePairs.map((p,i)=>({text:p.def,idx:i})));
+  let html='<div class="game-header"><div class="game-score">Matched: <span id="gameMatchCount">0</span>/'+gamePairs.length+' | Attempts: <span id="gameAttemptCount">0</span></div><div class="game-timer">Time: <span id="gameTimerDisplay">0:00</span></div><button class="green-btn" onclick="gameSetCategory(\'all\',document.querySelector(\'#gameCategoryBtns .on\'))">New Round</button></div>';
+  html+='<div class="match-grid"><div><div class="match-col-label">Terms</div>';
+  terms.forEach(t=>{html+='<div class="match-item" data-type="term" data-idx="'+t.idx+'" onclick="gameSelect(this)">'+t.text+'</div>';});
+  html+='</div><div><div class="match-col-label">Definitions</div>';
+  defs.forEach(d=>{html+='<div class="match-item" data-type="def" data-idx="'+d.idx+'" onclick="gameSelect(this)">'+d.text+'</div>';});
+  html+='</div></div>';area.innerHTML=html;
 }
-
-function renderGame() {
-  const area = document.getElementById('gameArea');
-  // Build two columns: shuffled terms and shuffled definitions
-  const terms = gamePairs.map((p,i) => ({text: p.term, idx: i, type: 'term'}));
-  const defs = gamePairs.map((p,i) => ({text: p.def, idx: i, type: 'def'}));
-  shuffleArr(terms); shuffleArr(defs);
-
-  let html = '<div class="game-header">';
-  html += '<div class="game-score">Matched: <span id="gameMatchCount">0</span>/'+gamePairs.length+' | Attempts: <span id="gameAttemptCount">0</span></div>';
-  html += '<div class="game-timer">Time: <span id="gameTimerDisplay">0:00</span></div>';
-  html += '<button onclick="gameSetCategory(document.querySelector(\'#gameCategoryBtns .gm-active\').textContent.includes(\'All\')?\'all\':document.querySelector(\'#gameCategoryBtns .gm-active\').getAttribute(\'onclick\').match(/\'(\\w+)\'/)[1], document.querySelector(\'#gameCategoryBtns .gm-active\'))">New Round</button>';
-  html += '</div>';
-  html += '<div class="match-grid"><div><div class="match-col-label">Terms</div>';
-  terms.forEach(t => { html += '<div class="match-item" data-type="term" data-idx="'+t.idx+'" onclick="gameSelect(this)">'+t.text+'</div>'; });
-  html += '</div><div><div class="match-col-label">Definitions</div>';
-  defs.forEach(d => { html += '<div class="match-item" data-type="def" data-idx="'+d.idx+'" onclick="gameSelect(this)">'+d.text+'</div>'; });
-  html += '</div></div>';
-  area.innerHTML = html;
-}
-
-function gameSelect(el) {
-  if (el.classList.contains('correct')) return;
-  const type = el.dataset.type;
-  const idx = parseInt(el.dataset.idx);
-
-  if (!gameSelected) {
-    gameSelected = {el, type, idx};
-    el.classList.add('selected');
-    return;
-  }
-
-  // Must select one from each column
-  if (type === gameSelected.type) {
-    gameSelected.el.classList.remove('selected');
-    gameSelected = {el, type, idx};
-    el.classList.add('selected');
-    return;
-  }
-
-  gameAttempts++;
-  document.getElementById('gameAttemptCount').textContent = gameAttempts;
-
-  if (idx === gameSelected.idx) {
-    // Match!
-    el.classList.add('correct');
-    gameSelected.el.classList.add('correct');
-    gameSelected.el.classList.remove('selected');
-    gameSelected = null;
-    gameMatched++;
-    document.getElementById('gameMatchCount').textContent = gameMatched;
-    if (gameMatched === gamePairs.length) {
-      clearInterval(gameInterval);
-      setTimeout(() => {
-        const m = Math.floor(gameTimer/60); const s = gameTimer%60;
-        const area = document.getElementById('gameArea');
-        area.innerHTML = '<div class="game-complete"><h2>All Matched!</h2><div class="final-score">'+gameAttempts+' attempts</div><p>Time: '+m+':'+(s<10?'0':'')+s+'</p><p>'+(gameAttempts<=gamePairs.length+2?'Perfect or near-perfect!':gameAttempts<=gamePairs.length*2?'Nice work!':'Keep practicing!')+'</p><br><button onclick="gameSetCategory(document.querySelector(\'#gameCategoryBtns .gm-active\').textContent.includes(\'All\')?\'all\':document.querySelector(\'#gameCategoryBtns .gm-active\').getAttribute(\'onclick\').match(/\'(\\w+)\'/)[1], document.querySelector(\'#gameCategoryBtns .gm-active\'))" style="background:#1a5e3a;color:#fff;border:none;padding:12px 28px;border-radius:10px;cursor:pointer;font-size:16px;font-weight:600;">Play Again</button></div>';
-      }, 400);
-    }
+function gameSelect(el){
+  if(el.classList.contains('correct'))return;
+  const type=el.dataset.type,idx=parseInt(el.dataset.idx);
+  if(!gameSelected){gameSelected={el,type,idx};el.classList.add('selected');return;}
+  if(type===gameSelected.type){gameSelected.el.classList.remove('selected');gameSelected={el,type,idx};el.classList.add('selected');return;}
+  gameAttempts++;document.getElementById('gameAttemptCount').textContent=gameAttempts;
+  if(idx===gameSelected.idx){
+    el.classList.add('correct');gameSelected.el.classList.add('correct');gameSelected.el.classList.remove('selected');gameSelected=null;gameMatched++;
+    document.getElementById('gameMatchCount').textContent=gameMatched;
+    if(gameMatched===gamePairs.length){clearInterval(gameInterval);setTimeout(()=>{const m=Math.floor(gameTimer/60),s=gameTimer%60;document.getElementById('gameArea').innerHTML='<div class="game-complete"><h2>All Matched!</h2><div class="final-score">'+gameAttempts+' attempts</div><p>Time: '+m+':'+(s<10?'0':'')+s+'</p><p>'+(gameAttempts<=gamePairs.length+2?'Perfect or near-perfect!':gameAttempts<=gamePairs.length*2?'Nice work!':'Keep practicing!')+'</p><br><button class="green-btn" onclick="gameSetCategory(\'all\',document.querySelector(\'#gameCategoryBtns .on\'))">Play Again</button></div>';},400);}
   } else {
-    // No match
-    el.classList.add('wrong');
-    gameSelected.el.classList.add('wrong');
-    const prev = gameSelected.el;
-    setTimeout(() => { el.classList.remove('wrong'); prev.classList.remove('wrong'); prev.classList.remove('selected'); }, 600);
-    gameSelected = null;
+    el.classList.add('wrong');gameSelected.el.classList.add('wrong');
+    const prev=gameSelected.el;setTimeout(()=>{el.classList.remove('wrong');prev.classList.remove('wrong');prev.classList.remove('selected');},600);gameSelected=null;
   }
+}
+
+/* ===== MEMORY CARD GAME ===== */
+const MEM_DATA = [
+  {cat:'w4', term:'Mitochondria', def:'Powerhouse / ATP'},
+  {cat:'w4', term:'Ribosome', def:'Protein synthesis'},
+  {cat:'w4', term:'Golgi', def:'Package & ship proteins'},
+  {cat:'w4', term:'Lysosome', def:'Digest waste'},
+  {cat:'w4', term:'Nucleus', def:'DNA control center'},
+  {cat:'w4', term:'Rough ER', def:'Protein synthesis (ribosomes)'},
+  {cat:'w4', term:'Smooth ER', def:'Lipid synthesis / detox'},
+  {cat:'w4', term:'Chloroplast', def:'Photosynthesis'},
+  {cat:'w5', term:'Osmosis', def:'Water diffusion'},
+  {cat:'w5', term:'Hypertonic', def:'Cell shrivels'},
+  {cat:'w5', term:'Hypotonic', def:'Cell swells'},
+  {cat:'w5', term:'Active Transport', def:'Against gradient + ATP'},
+  {cat:'w5', term:'Prophase', def:'Chromosomes condense'},
+  {cat:'w5', term:'Metaphase', def:'Line up at equator'},
+  {cat:'w5', term:'Anaphase', def:'Chromatids separate'},
+  {cat:'w5', term:'Meiosis', def:'4 haploid cells'},
+  {cat:'w6', term:'Enzyme', def:'Biological catalyst'},
+  {cat:'w6', term:'Glycolysis', def:'Glucose \u2192 pyruvate (2 ATP)'},
+  {cat:'w6', term:'Krebs Cycle', def:'Matrix: NADH + CO\u2082'},
+  {cat:'w6', term:'ETC', def:'~34 ATP + O\u2082 \u2192 H\u2082O'},
+  {cat:'w6', term:'Calvin Cycle', def:'Fix CO\u2082 \u2192 glucose'},
+  {cat:'w6', term:'Fermentation', def:'Anaerobic, 2 ATP only'},
+  {cat:'w6', term:'ATP', def:'Energy currency'},
+  {cat:'w6', term:'RuBisCO', def:'CO\u2082 fixation enzyme'},
+];
+
+let memPairs=[], memFlipped=[], memMatched=0, memMoves=0, memLocked=false;
+function memSetCat(cat,btn){
+  document.querySelectorAll('#memCatBtns button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  const pool=shuffleArr(cat==='all'?[...MEM_DATA]:MEM_DATA.filter(m=>m.cat===cat)).slice(0,8);
+  memPairs=pool;memFlipped=[];memMatched=0;memMoves=0;memLocked=false;renderMem();
+}
+function renderMem(){
+  const cards=[];
+  memPairs.forEach((p,i)=>{cards.push({id:i,type:'term',text:p.term});cards.push({id:i,type:'def',text:p.def});});
+  shuffleArr(cards);
+  const grid=document.getElementById('memGrid');
+  grid.innerHTML=cards.map((c,i)=>'<div class="mem-card" data-id="'+c.id+'" data-ci="'+i+'" onclick="memFlip(this)"><div class="mem-card-inner"><div class="mem-card-face mem-card-front">?</div><div class="mem-card-face mem-card-back">'+c.text+'</div></div></div>').join('');
+  document.getElementById('memProgress').textContent='Pairs: 0/'+memPairs.length;
+  document.getElementById('memMoves').textContent='Moves: 0';
+}
+function memFlip(el){
+  if(memLocked||el.classList.contains('mem-flipped')||el.classList.contains('mem-matched'))return;
+  el.classList.add('mem-flipped');memFlipped.push(el);
+  if(memFlipped.length===2){
+    memMoves++;document.getElementById('memMoves').textContent='Moves: '+memMoves;memLocked=true;
+    const a=memFlipped[0],b=memFlipped[1];
+    if(a.dataset.id===b.dataset.id&&a.dataset.ci!==b.dataset.ci){
+      a.classList.add('mem-matched');b.classList.add('mem-matched');memMatched++;
+      document.getElementById('memProgress').textContent='Pairs: '+memMatched+'/'+memPairs.length;
+      memFlipped=[];memLocked=false;
+      if(memMatched===memPairs.length)setTimeout(()=>alert('You matched all '+memPairs.length+' pairs in '+memMoves+' moves!'),300);
+    } else {
+      setTimeout(()=>{a.classList.remove('mem-flipped');b.classList.remove('mem-flipped');memFlipped=[];memLocked=false;},800);
+    }
+  }
+}
+
+/* ===== FULL TEST ENGINE ===== */
+const TEST_BANK = [...QUIZ_DATA,
+  // Additional test-only questions for variety
+  {cat:'w4', q:'What is homeostasis?', opts:['Cell division','Maintaining internal stability','DNA replication','Energy production'], ans:1, exp:'Homeostasis is the maintenance of a stable internal environment despite external changes.'},
+  {cat:'w4', q:'The inner folds of mitochondria are called:', opts:['Thylakoids','Cristae','Stroma','Cisternae'], ans:1, exp:'Cristae are the inner membrane folds of mitochondria that increase surface area for ATP production.'},
+  {cat:'w4', q:'Which organelle is part of the endomembrane system?', opts:['Mitochondria','Ribosome','Golgi apparatus','Chloroplast'], ans:2, exp:'The endomembrane system includes the ER, Golgi, lysosomes, and vesicles. Mitochondria and chloroplasts are NOT part of it.'},
+  {cat:'w5', q:'Water moves toward the side with:', opts:['Less solute','More solute','Equal solute','No solute'], ans:1, exp:'In osmosis, water moves toward the side with MORE solute (higher concentration) to try to equalize.'},
+  {cat:'w5', q:'Aquaporins are an example of:', opts:['Active transport pumps','Channel proteins for water','Carrier proteins','Enzymes'], ans:1, exp:'Aquaporins are channel proteins that specifically allow water to pass through the membrane.'},
+  {cat:'w5', q:'How many chromosomes does a human gamete have?', opts:['46','23','92','12'], ans:1, exp:'Human gametes (sperm/egg) are haploid with 23 chromosomes. Somatic cells are diploid with 46.'},
+  {cat:'w5', q:'Receptor-mediated endocytosis is triggered when:', opts:['Any molecule touches the cell','Specific molecules bind to receptors','ATP is depleted','The cell divides'], ans:1, exp:'Receptor-mediated endocytosis is highly specific \u2014 only triggered when certain molecules bind to membrane receptors.'},
+  {cat:'w6', q:'What molecule is produced when ATP loses a phosphate?', opts:['AMP','ADP','GTP','NADH'], ans:1, exp:'ATP \u2192 ADP + P\u1d62 + energy. ADP (adenosine diphosphate) has two phosphate groups remaining.'},
+  {cat:'w6', q:'Where does the transition step (pyruvate \u2192 Acetyl-CoA) occur?', opts:['Cytoplasm','Mitochondrial matrix','Inner membrane','Stroma'], ans:1, exp:'Pyruvate enters the mitochondrial matrix and is converted to Acetyl-CoA before entering the Krebs Cycle.'},
+  {cat:'w6', q:'Which is a product of the light-dependent reactions?', opts:['Glucose','CO\u2082','O\u2082','Pyruvate'], ans:2, exp:'The light-dependent reactions split water, releasing O\u2082 as a byproduct, and produce ATP and NADPH.'},
+  {cat:'w6', q:'Accessory pigments like carotenoids appear:', opts:['Green','Yellow/Orange','Blue','Clear'], ans:1, exp:'Carotenoids absorb blue/green light and reflect yellow/orange wavelengths.'},
+];
+
+let testQuestions=[], testAnswers={}, testSubmitted=false;
+function testGenerate(){
+  testSubmitted=false;
+  document.getElementById('testSubmitBtn').disabled=false;
+  document.getElementById('testSummary').innerHTML='';
+  testAnswers={};
+  testQuestions=shuffleArr([...TEST_BANK]).slice(0,50);
+  const area=document.getElementById('testArea');
+  let html='';
+  testQuestions.forEach((q,qi)=>{
+    html+='<div class="test-q-block" id="tq'+qi+'"><div class="test-q-num">Question '+(qi+1)+' of 50</div>';
+    html+='<div class="test-q-text">'+q.q+'</div><div class="test-opts">';
+    q.opts.forEach((o,oi)=>{html+='<div class="test-opt" data-qi="'+qi+'" data-oi="'+oi+'" onclick="testSelect('+qi+','+oi+')">'+String.fromCharCode(65+oi)+'. '+o+'</div>';});
+    html+='</div><div class="test-exp" id="texp'+qi+'">'+q.exp+'</div></div>';
+  });
+  area.innerHTML=html;
+  window.scrollTo({top:document.getElementById('testArea').offsetTop-60,behavior:'smooth'});
+}
+function testSelect(qi,oi){
+  if(testSubmitted)return;
+  testAnswers[qi]=oi;
+  document.querySelectorAll('#tq'+qi+' .test-opt').forEach(el=>{el.classList.remove('t-selected');});
+  document.querySelector('#tq'+qi+' .test-opt[data-oi="'+oi+'"]').classList.add('t-selected');
+}
+function testSubmit(){
+  if(testSubmitted)return;testSubmitted=true;
+  document.getElementById('testSubmitBtn').disabled=true;
+  let correct=0;
+  testQuestions.forEach((q,qi)=>{
+    const opts=document.querySelectorAll('#tq'+qi+' .test-opt');
+    opts[q.ans].classList.add('t-correct');
+    if(testAnswers[qi]!==undefined&&testAnswers[qi]!==q.ans)opts[testAnswers[qi]].classList.add('t-wrong');
+    if(testAnswers[qi]===q.ans)correct++;
+    document.getElementById('texp'+qi).classList.add('show');
+  });
+  const pct=Math.round(correct/testQuestions.length*100);
+  let grade='F',gc='grade-f';
+  if(pct>=90){grade='A';gc='grade-a';}else if(pct>=80){grade='B';gc='grade-b';}else if(pct>=70){grade='C';gc='grade-c';}
+  document.getElementById('testSummary').innerHTML='<div class="test-summary"><h2>Test Results</h2><div class="big-score">'+correct+' / '+testQuestions.length+'</div><div class="test-grade '+gc+'">'+pct+'% \u2014 Grade: '+grade+'</div><p style="color:#555;margin-top:8px;">'+(pct>=90?'Excellent! You\'re ready for the exam!':pct>=80?'Great work! Review the red ones above.':pct>=70?'Good start. Focus on topics you missed.':'Keep studying \u2014 review the notes sections and try again!')+'</p></div>';
+  document.getElementById('testSummary').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
 /* ===== INIT ===== */
 fcRender();
-quizQuestions = [...QUIZ_DATA]; shuffleArr(quizQuestions); renderQuiz();
-gameSetCategory('all', document.querySelector('#gameCategoryBtns .gm-active'));
+quizQuestions=[...QUIZ_DATA];shuffleArr(quizQuestions);renderQuiz();
+tfItems=[...TF_DATA];shuffleArr(tfItems);renderTF();
+orderItems=[...ORDER_DATA];shuffleArr(orderItems);renderOrder();
+gameSetCategory('all',document.querySelector('#gameCategoryBtns .on'));
+memSetCat('all',document.querySelector('#memCatBtns .on'));
+testGenerate();
 
 /* Keyboard shortcuts */
 document.addEventListener('keydown', e => {
-  if (document.getElementById('flashcards').classList.contains('active')) {
-    if (e.key === 'ArrowRight') fcNext();
-    else if (e.key === 'ArrowLeft') fcPrev();
-    else if (e.key === ' ') { e.preventDefault(); fcFlip(); }
+  if(document.getElementById('flashcards').classList.contains('active')){
+    if(e.key==='ArrowRight')fcNext();else if(e.key==='ArrowLeft')fcPrev();else if(e.key===' '){e.preventDefault();fcFlip();}
   }
-  if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
-    e.preventDefault(); document.getElementById('searchBox').focus();
-  }
+  if(e.key==='/'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();document.getElementById('searchBox').focus();}
 });
 </script>
 </body>
